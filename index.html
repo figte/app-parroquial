@@ -4,10 +4,93 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Vue</title>
+    <title>APP</title>
+
+     <!-- css include -->
+  <link rel='stylesheet' id='bootstrap-css' href='/src/assets/css/bootstrap.min.css' type='text/css' media='all'>
+  <link rel='stylesheet' id='fontawesome-css' href='/src/assets/css/font-awesome.min.css' type='text/css' media='all'>
+  <link rel='stylesheet' id='theme-css-css' href='/src/assets/css/theme-style.css' type='text/css' media='all'>
+  <link rel='stylesheet' id='peace-style-css' href='/src/assets/css/style.css' type='text/css' media='all'>
+  <link rel='stylesheet' id='masterslider-css' href='/src/assets/css/masterslider.main.css' type='text/css' media='all'>
+  <!-- js inlcude -->
+  <script type='text/javascript' src='/src/assets/js/jquery.js'></script>
+
+
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
+
+     <!-- js include -->
+  <script type='text/javascript' src='../../../../../../maps/api/js?sensor=true&#038;ver=1.0'></script>
+  <script type='text/javascript' src='/src/assets/js/plugins.js'></script>
+  <script type='text/javascript' src='/src/assets/js/masterslider.min.js'></script>
+  <script type='text/javascript' src='/src/assets/js/functions.js'></script>
+
+  <script>
+
+    // masterslider
+    (function ($) {
+      "use strict";
+
+      $(function () {
+        var masterslider_8dad = new MasterSlider();
+
+        // slider controls
+        masterslider_8dad.control('bullets', {
+          autohide: true,
+          overVideo: true,
+          dir: 'h',
+          align: 'bottom',
+          space: 6,
+          margin: 10
+        });
+        // slider setup
+        masterslider_8dad.setup("MS5614c1d9c8dad", {
+          width: 1170,
+          height: 730,
+          minHeight: 0,
+          space: 0,
+          start: 1,
+          grabCursor: true,
+          swipe: true,
+          mouse: false,
+          keyboard: false,
+          layout: "fullwidth",
+          wheel: false,
+          autoplay: true,
+          instantStartLayers: false,
+          loop: false,
+          shuffle: false,
+          preload: 1,
+          heightLimit: true,
+          autoHeight: false,
+          smoothHeight: true,
+          endPause: false,
+          overPause: false,
+          fillMode: "fill",
+          centerControls: true,
+          startOnAppear: false,
+          layersMode: "center",
+          autofillTarget: "",
+          hideLayers: false,
+          fullscreenMargin: 0,
+          speed: 100,
+          dir: "h",
+          // parallaxMode: 'mouse',
+          view: "fade"
+        });
+
+
+
+        $("head").append("<link rel='stylesheet' id='ms-fonts'  href='//fonts.googleapis.com/css?family=Roboto:900,regular,700|Yellowtail:regular' type='text/css' media='all' />");
+
+        window.masterslider_instances = window.masterslider_instances || [];
+        window.masterslider_instances.push(masterslider_8dad);
+      });
+
+    })(jQuery);
+  </script>
+
   </body>
 </html>
