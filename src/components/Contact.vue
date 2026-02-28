@@ -119,7 +119,7 @@
                     <img
                       width="150"
                       height="150"
-                      src="/assets/images/09/personimg02.jpg"
+                      src="./assets/images/09/personimg02.jpg"
                       class="img-circle"
                       alt="team-3"
                     />

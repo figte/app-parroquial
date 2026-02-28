@@ -34,7 +34,7 @@
                       </div>
                       <!-- end svg border -->
                       <div class="svg-fill">
-                        <img src="/assets/hexa_fill_color.svg" alt="#" />
+                        <img src="./assets/hexa_fill_color.svg" alt="#" />
                       </div>
                       <div class="content">
                         <span>Quote From</span>
@@ -76,7 +76,7 @@
             <div class="content-wrapper">
               <div class="client">
                 <a href="#">
-                  <img src="/assets/images/09/client1.png" alt="#" />
+                  <img src="./assets/images/09/client1.png" alt="#" />
                 </a>
               </div>
               <!-- end client -->
@@ -88,7 +88,7 @@
             <div class="content-wrapper">
               <div class="client">
                 <a href="#">
-                  <img src="/assets/images/09/client2.png" alt="#" />
+                  <img src="./assets/images/09/client2.png" alt="#" />
                 </a>
               </div>
               <!-- end client -->
@@ -100,7 +100,7 @@
             <div class="content-wrapper">
               <div class="client">
                 <a href="#">
-                  <img src="/assets/images/09/client3.png" alt="#" />
+                  <img src="./assets/images/09/client3.png" alt="#" />
                 </a>
               </div>
               <!-- end client -->
@@ -112,7 +112,7 @@
             <div class="content-wrapper">
               <div class="client">
                 <a href="#">
-                  <img src="/assets/images/09/client4.png" alt="#" />
+                  <img src="./assets/images/09/client4.png" alt="#" />
                 </a>
               </div>
               <!-- end client -->
