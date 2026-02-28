@@ -1,7 +1,28 @@
 
 <script setup>
-import UpcomingEvent from './UpcomingEvent.vue';
+import { onMounted } from 'vue'
+import UpcomingEvent from './UpcomingEvent.vue'
 
+onMounted(() => {
+  if (typeof window.MasterSlider !== 'undefined' && typeof window.jQuery !== 'undefined') {
+    const ms = new window.MasterSlider()
+    ms.control('bullets', { autohide: true, overVideo: true, dir: 'h', align: 'bottom', space: 6, margin: 10 })
+    ms.setup('MS5614c1d9c8dad', {
+      width: 1170, height: 730, minHeight: 0, space: 0, start: 1,
+      grabCursor: true, swipe: true, mouse: false, keyboard: false,
+      layout: 'fullwidth', wheel: false, autoplay: true,
+      instantStartLayers: false, loop: true, shuffle: false, preload: 1,
+      heightLimit: true, autoHeight: false, smoothHeight: true,
+      endPause: false, overPause: false, fillMode: 'fill',
+      centerControls: true, startOnAppear: false, layersMode: 'center',
+      autofillTarget: '', hideLayers: false, fullscreenMargin: 0,
+      speed: 100, dir: 'h', view: 'fade'
+    })
+    window.masterslider_instances = window.masterslider_instances || []
+    window.masterslider_instances.push(ms)
+    window.jQuery('head').append("<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto:900,regular,700|Yellowtail:regular' type='text/css' media='all' />")
+  }
+})
 </script>
 
 <template>
