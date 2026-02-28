@@ -4,12 +4,10 @@
         <div class="container">
           <div class="content-section">
             <div class="content-wrapper">
-              <h2 class="section-title">Send Us a Message</h2>
+              <h2 class="section-title">Envíenos un Mensaje</h2>
 
               <div class="section-detail">
-                Enthusiastically underwhelm quality benefits rather than
-                professional outside the box thinking. Distinctively network
-                highly efficient leadership skills
+                Estamos disponibles para escucharle. No dude en contactarnos para consultas pastorales, solicitud de sacramentos o cualquier inquietud espiritual.
               </div>
 
               <div role="form" class="wpcf7" id="wpcf7-f7-p367-o1" lang="en-US" dir="ltr">
@@ -35,7 +33,7 @@
                         class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control"
                         aria-required="true"
                         aria-invalid="false"
-                        placeholder="Full Name"
+                        placeholder="Nombre completo"
                       />
                     </span>
                   </div>
@@ -52,7 +50,7 @@
                         class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email form-control"
                         aria-required="true"
                         aria-invalid="false"
-                        placeholder="Email Address"
+                        placeholder="Correo electrónico"
                       />
                     </span>
                   </div>
@@ -68,7 +66,7 @@
                         size="40"
                         class="wpcf7-form-control wpcf7-text form-control"
                         aria-invalid="false"
-                        placeholder="Subject"
+                        placeholder="Asunto"
                       />
                     </span>
                   </div>
@@ -82,7 +80,7 @@
                         rows="5"
                         class="wpcf7-form-control wpcf7-textarea form-control input-md"
                         aria-invalid="false"
-                        placeholder="YOUR MESSAGE"
+                        placeholder="Su mensaje..."
                       ></textarea>
                     </span>
                   </div>
@@ -91,7 +89,7 @@
                   <p class="event-btn-container col-md-12">
                     <input
                       type="submit"
-                      value="SEND NOW"
+                      value="ENVIAR MENSAJE"
                       class="wpcf7-form-control wpcf7-submit btn custom-btn"
                     />
                   </p>
@@ -117,38 +115,38 @@
                 <div class="googleMaps google-map-container"></div>
                 <div class="contact-info col-md-6 pull-right">
                   <div class="contact-person">
-                    <h2>Contact Person</h2>
+                    <h2>Contacto Pastoral</h2>
                     <img
                       width="150"
                       height="150"
-                      src="/public/assets/images/09/personimg02.jpg"
+                      src="/assets/images/09/personimg02.jpg"
                       class="img-circle"
                       alt="team-3"
                     />
                     <div class="info">
-                      <h3>Deniyel Murchi</h3>
-                      <p>Church Pastor</p>
+                      <h3>Padre Juan Pablo Rodríguez</h3>
+                      <p>Párroco</p>
                       <span>
-                        <b>TEL:</b> 02 9185 587
+                        <b>TEL:</b> +57 300 000 0000
                       </span>
                       <br />
                       <span>
-                        <b>Email:</b> deniyel@demo.com
+                        <b>Email:</b> parroquia@diocesis.org
                       </span>
                     </div>
                     <!-- /.info -->
                   </div>
                   <!-- /.contact-person -->
                   <div class="contact-information">
-                    <h2>Contact Info</h2>
+                    <h2>Información de Contacto</h2>
                     <div class="address">
                       <div class="media">
                         <div class="media-left">
                           <i class="fa fa-map-marker base-color"></i>
                         </div>
                         <div class="media-body">
-                          Inner Circular Road, New Fabada Streed
-                          <br />Barmuda, USA.
+                          Carrera 5 # 10-20, Barrio Centro
+                          <br />Ciudad, Colombia.
                           <br />
                         </div>
                         <!-- end media body -->
@@ -158,13 +156,13 @@
                           <i class="fa fa-clock-o base-color"></i>
                         </div>
                         <div class="media-body">
-                          <strong>Monday-Thursday :</strong> 06:00 am - 09:00 pm
+                          <strong>Lunes a Viernes :</strong> 07:00 am - 07:00 pm
                           <br />
-                          <strong>Friday :</strong> 10:30 am - 05:30 pm
+                          <strong>Sábado :</strong> 07:00 am - 06:00 pm
                           <br />
-                          <strong>Saturday :</strong> 10:30 am - 05:30 pm
+                          <strong>Domingo :</strong> 06:00 am - 01:00 pm
                           <br />
-                          <strong>Sunday :</strong> Closed
+                          <strong>Misas :</strong> 7am, 10am, 12pm, 6pm (Dom)
                         </div>
                         <!-- end media body -->
                       </div>

@@ -6,15 +6,14 @@
             <div class="content-wrapper">
               <div class="about-us">
                 <div class="service-person">
-                  <img src="/public/assets/images/09/personimg03.jpg" alt="" />
+                  <img src="/assets/images/09/personimg03.jpg" alt="" />
 
                   <div class="person-details">
-                    <h1>Deniyel Murchi</h1>
-                    <span>Church Pastor</span>
+                    <h1>Padre Juan Pablo Rodríguez</h1>
+                    <span>Párroco</span>
 
                     <div class="person-content">
-                      Objectively streamline low-risk high-yield results whereas
-                      client-centric products. Objectively enable unique.
+                      Bienvenidos a nuestra comunidad parroquial. Juntos caminamos en la fe, esperanza y caridad al servicio del Señor y del prójimo.
                     </div>
                     <!-- end person content -->
 
@@ -61,27 +60,23 @@
           <div class="col-sm-7">
             <div class="content-wrapper">
               <div class="about-us">
-                <h2 class="section-title">What We Do?</h2>
+                <h2 class="section-title">¿Quiénes Somos?</h2>
 
                 <div class="section-detail">
-                  Vestibulum ac diam sit amet quam vehicula elementum sed sit
-                  amet dui. Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. Curabitur aliquet quam id dui posuere blandit.
+                  Somos una comunidad parroquial católica que vive y proclama el Evangelio de Jesucristo. Nuestras puertas están abiertas para todos los que buscan a Dios con corazón sincero.
                 </div>
                 <div class="service-details">
                   <div class="darson">
                     <div class="item">
                       <div class="item-element">
-                        <span class="fa fa-briefcase"></span>
+                        <span class="fa fa-heart"></span>
                       </div>
                       <!-- end item element -->
                     </div>
                     <!-- end item -->
-                    <div class="head">Glorify God</div>
+                    <div class="head">Eucaristía y Sacramentos</div>
                     <div class="content">
-                      Vivamus magna justo, lacinia eget consectetur sed,
-                      convallis at tellus. Mauris blandit aliquet elit, eget
-                      tincidunt nibh pulvinar a.
+                      Celebramos la Santa Misa y los sacramentos como fuente y cumbre de la vida cristiana, nutriendo nuestra fe comunitaria.
                     </div>
                   </div>
                   <!-- end person -->
@@ -89,16 +84,14 @@
                   <div class="darson">
                     <div class="item">
                       <div class="item-element">
-                        <span class="fa fa-binoculars"></span>
+                        <span class="fa fa-users"></span>
                       </div>
                       <!-- end item element -->
                     </div>
                     <!-- end item -->
-                    <div class="head">Love Community</div>
+                    <div class="head">Comunidad y Familia</div>
                     <div class="content">
-                      Vivamus magna justo, lacinia eget consectetur sed,
-                      convallis at tellus. Mauris blandit aliquet elit, eget
-                      tincidunt nibh pulvinar a.
+                      Promovemos la fraternidad cristiana, acompañando a las familias en su camino de fe y formación integral.
                     </div>
                   </div>
                   <!-- end person -->
@@ -106,16 +99,14 @@
                   <div class="darson">
                     <div class="item">
                       <div class="item-element">
-                        <span class="fa fa-rocket"></span>
+                        <span class="fa fa-hand-o-right"></span>
                       </div>
                       <!-- end item element -->
                     </div>
                     <!-- end item -->
-                    <div class="head">Believe Biblically</div>
+                    <div class="head">Servicio y Caridad</div>
                     <div class="content">
-                      Vivamus magna justo, lacinia eget consectetur sed,
-                      convallis at tellus. Mauris blandit aliquet elit, eget
-                      tincidunt nibh pulvinar a.
+                      Vivimos el mandato evangélico del amor al prójimo a través de obras de misericordia y servicio a los más necesitados.
                     </div>
                   </div>
                   <!-- end person -->

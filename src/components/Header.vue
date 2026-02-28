@@ -10,8 +10,8 @@ import Navbar from '../components/Navbar.vue'
         <div class="col-sm-4 hidden-xs address">
           <div class="pull-left">
             <ul>
-              <li><i class="fa fa-phone"></i> +880 1710-000-000</li>
-              <li><i class="fa fa-envelope-o"></i> Email@Domain.com</li>
+              <li><i class="fa fa-phone"></i> +57 300 000 0000</li>
+              <li><i class="fa fa-envelope-o"></i> parroquia@diocesis.org</li>
             </ul>
           </div>
           <!-- pull left  -->
@@ -21,7 +21,7 @@ import Navbar from '../components/Navbar.vue'
         <div class="col-sm-4 col-xs-12 ">
           <div class="logo text-center">
             <a href="/">
-              LOGO
+              <img src="/assets/images/09/logo.png" alt="Parroquia Católica" style="max-height:60px;" />
             </a>
           </div>
           <!-- /.logo -->
