@@ -43,10 +43,10 @@ onMounted(() => {
                   >
                     <div class="ms-slide" data-delay="8" data-fill-mode="fill">
                       <img
-                        src="/assets/images/blank.gif"
+                        src="./assets/images/blank.gif"
                         alt=""
                         title=""
-                        data-src="/assets/images/09/bg-Church.png"
+                        data-src="./assets/images/09/bg-Church.png"
                       />
                       <a
                         href="#"
@@ -127,8 +127,8 @@ onMounted(() => {
                       </div>
                       <img
                         class="ms-layer"
-                        src="/assets/images/blank.gif"
-                        data-src="/assets/images/09/layer1.png"
+                        src="./assets/images/blank.gif"
+                        data-src="./assets/images/09/layer1.png"
                         alt=""
                         style=""
                         data-effect="t(true,0,151,602,n,n,n,n,n,n,n,n,n,n,n)"
@@ -146,8 +146,8 @@ onMounted(() => {
                       />
                       <img
                         class="ms-layer"
-                        src="/assets/images/blank.gif"
-                        data-src="/assets/images/09/elemenat1.png"
+                        src="./assets/images/blank.gif"
+                        data-src="./assets/images/09/elemenat1.png"
                         alt=""
                         style=""
                         data-effect="t(true,0,151,602,n,n,n,n,n,n,n,n,n,n,n)"
@@ -168,10 +168,10 @@ onMounted(() => {
 
                     <div class="ms-slide" data-delay="8" data-fill-mode="fill">
                       <img
-                        src="/assets/images/blank.gif"
+                        src="./assets/images/blank.gif"
                         alt=""
                         title=""
-                        data-src="/assets/images/09/churnch-bg-2.jpg"
+                        data-src="./assets/images/09/churnch-bg-2.jpg"
                       />
                       <a
                         href="#"
@@ -257,15 +257,15 @@ onMounted(() => {
 
                     <div class="ms-slide" data-delay="8" data-fill-mode="fill">
                       <img
-                        src="/assets/images/blank.gif"
+                        src="./assets/images/blank.gif"
                         alt=""
                         title=""
-                        data-src="/assets/images/09/churnch-bg-3.jpg"
+                        data-src="./assets/images/09/churnch-bg-3.jpg"
                       />
                       <img
                         class="ms-layer"
-                        src="/assets/images/blank.gif"
-                        data-src="/assets/images/09/element2.png"
+                        src="./assets/images/blank.gif"
+                        data-src="./assets/images/09/element2.png"
                         alt=""
                         style=""
                         data-effect="t(true,n,150,n,n,n,n,n,n,n,n,n,n,n,n)"
