@@ -81,7 +81,6 @@
                   <i class="fa fa-calendar-o"></i>
                   <time class="post-meta-element" datetime="2026-01-15">15 Enero, 2026</time>
                 </li>
-                </li>
               </ul>
               <!-- /.latest-post -->
             </div>
