@@ -4,11 +4,10 @@
         <div class="container">
           <div class="content-section">
             <div class="content-wrapper">
-              <h2 class="section-title">Latest Sermons</h2>
+              <h2 class="section-title">Últimas Homilías</h2>
 
               <div class="section-detail">
-                Proin eget tortor risus. Cras ultricies ligula sed magna dictum
-                porta. Vivamus suscipit tortor eget felis porttitor volutpat.
+                Escuche y reflexione sobre la Palabra de Dios. Nuestras homilías y recursos espirituales están disponibles para toda la comunidad.
               </div>
               <!-- /.section-detail -->
               <div class="sermons">
@@ -17,7 +16,7 @@
                     <img
                       width="150"
                       height="150"
-                      src=" /public/assets/images/09/gallery26-150x150.jpg"
+                      src="/assets/images/09/gallery26-150x150.jpg"
                       class="attachment-thumbnail wp-post-image"
                       alt="gallery26"
                     />
@@ -57,7 +56,7 @@
                     <img
                       width="150"
                       height="150"
-                      src=" /public/assets/images/09/sermons1-150x150.jpg"
+                      src="/assets/images/09/sermons1-150x150.jpg"
                       class="attachment-thumbnail wp-post-image"
                       alt="sermons1"
                     />
@@ -98,7 +97,7 @@
                     <img
                       width="150"
                       height="150"
-                      src=" /public/assets/images/09/sermons2-150x150.jpg"
+                      src="/assets/images/09/sermons2-150x150.jpg"
                       class="attachment-thumbnail wp-post-image"
                       alt="sermons2"
                     />
@@ -139,7 +138,7 @@
                     <img
                       width="150"
                       height="150"
-                      src=" /public/assets/images/09/personimg03-150x150.jpg"
+                      src="/assets/images/09/personimg03-150x150.jpg"
                       class="attachment-thumbnail wp-post-image"
                       alt="sermons1"
                     />
