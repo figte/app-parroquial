@@ -1,20 +1,28 @@
 <script setup>
-
+import { onMounted } from 'vue'
 import Header from '../components/Header.vue'
 import Loader from '../components/Loader.vue'
-import Banner from '../components/Banner.vue';
-import Footer from '../components/Footer.vue';
-import Info from '../components/Info.vue';
-import Gallery from '../components/Gallery.vue';
-import Events from '../components/Events.vue';
-import Posts from '../components/Posts.vue';
-import Donations from '../components/Donations.vue';
-import RecentPosts from '../components/RecentPosts.vue';
-import Banner2 from '../components/Banner2.vue';
-import Contact from '../components/Contact.vue';
-import Social from '../components/Social.vue';
+import Banner from '../components/Banner.vue'
+import Footer from '../components/Footer.vue'
+import Info from '../components/Info.vue'
+import Gallery from '../components/Gallery.vue'
+import Events from '../components/Events.vue'
+import Posts from '../components/Posts.vue'
+import RecentPosts from '../components/RecentPosts.vue'
+import Banner2 from '../components/Banner2.vue'
+import Contact from '../components/Contact.vue'
+import Social from '../components/Social.vue'
 
-
+onMounted(() => {
+  // Ocultar el preloader una vez que Vue haya renderizado el DOM
+  // (garantiza que no quede bloqueando el contenido)
+  if (typeof window.jQuery !== 'undefined') {
+    window.jQuery('#preloader').delay(350).fadeOut('slow')
+  } else {
+    const el = document.getElementById('preloader')
+    if (el) setTimeout(() => { el.style.display = 'none' }, 400)
+  }
+})
 </script>
 
 <template>
