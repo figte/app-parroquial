@@ -133,7 +133,7 @@
           </div>
 
           <!-- Foto de la iglesia -->
-          <div class="church-photo-row">
+          <div class="row church-photo-row">
             <div class="col-md-8 col-md-offset-2">
               <div class="church-photo-wrap">
                 <img
