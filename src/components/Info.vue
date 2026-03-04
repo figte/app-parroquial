@@ -1,3 +1,7 @@
+<script setup>
+const base = import.meta.env.BASE_URL
+</script>
+
 <template>
     <!-- what we do start -->
       <section class="what-we-do" id="info">
@@ -6,7 +10,7 @@
             <div class="content-wrapper">
               <div class="about-us">
                 <div class="service-person">
-                  <img src="/assets/images/09/personimg03.jpg" alt="" />
+                  <img :src="base + 'assets/images/09/personimg03.jpg'" alt="" />
 
                   <div class="person-details">
                     <h1>Padre Juan Pablo Rodríguez</h1>

@@ -1,3 +1,7 @@
+<script setup>
+const base = import.meta.env.BASE_URL
+</script>
+
 <template>
        <!-- contact us section start  -->
       <section class="contact-us-section" id="contact">
@@ -119,7 +123,7 @@
                     <img
                       width="150"
                       height="150"
-                      src="/assets/images/09/personimg02.jpg"
+                      :src="base + 'assets/images/09/personimg02.jpg'"
                       class="img-circle"
                       alt="team-3"
                     />
