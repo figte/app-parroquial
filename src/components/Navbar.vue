@@ -61,22 +61,28 @@
 
                   <li class="dropdown">
                     <a
-                      title="Sermons"
+                      title="Mapa"
+                      href="#mapa"
+                      aria-haspopup="true"
+                      >Ubicación</a>
+                  </li>
+
+                  <li class="dropdown">
+                    <a
+                      title="Recursos"
                       href="#"
-                      
                       aria-haspopup="true"
                       >Recursos <i class="fa fa-angle-down"></i
                     ></a>
                     <ul role="menu" class="dropdown-menu">
                       <li>
-                        <a title="Sermon Single" href="#posts"
-                          >Homilias</a
-                        >
+                        <a title="Homilias" href="#posts">Homilías</a>
                       </li>
                       <li>
-                        <a title="Sermons 2 Col" href="#donations"
-                          >Donaciones</a
-                        >
+                        <a title="Cantos y Formación" href="#recursos">Cantos &amp; Formación</a>
+                      </li>
+                      <li>
+                        <a title="Documentos" href="#recursos">Documentos</a>
                       </li>
                     </ul>
                   </li>

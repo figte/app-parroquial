@@ -70,7 +70,7 @@ onMounted(() => {
                         data-offset-y="454"
                         data-origin="tl"
                         data-position="normal"
-                        >GET HELP NOW</a
+                        >CONÓCENOS</a
                       >
                       <div
                         class="ms-layer msp-cn-1-5"
@@ -87,9 +87,7 @@ onMounted(() => {
                         data-origin="tl"
                         data-position="normal"
                       >
-                        Enthusiastically underwhelm quality benefits rather than
-                        professional "outside the box" thinking. Distinctively
-                        network highly efficient leadership skills
+                        Comunidad parroquial al servicio de Dios y de los hermanos, proclamando el Evangelio con amor y entrega
                       </div>
                       <div
                         class="ms-layer msp-cn-1-4"
@@ -106,7 +104,7 @@ onMounted(() => {
                         data-origin="tl"
                         data-position="normal"
                       >
-                        We love and respect to all Religion and Their People
+                        Ahuachapán, El Salvador · Diócesis de Santa Ana
                       </div>
                       <div
                         class="ms-layer msp-cn-3-1"
@@ -123,7 +121,7 @@ onMounted(() => {
                         data-origin="tl"
                         data-position="normal"
                       >
-                        WE BELIEVE IN HUMINITY
+                        PARROQUIA NUESTRA SEÑORA DE EL REFUGIO
                       </div>
                       <img
                         class="ms-layer"
@@ -195,7 +193,7 @@ onMounted(() => {
                         data-offset-y="457"
                         data-origin="tl"
                         data-position="normal"
-                        >GET HELP NOW</a
+                        >CONÓCENOS</a
                       >
                       <div
                         class="ms-layer msp-cn-1-9"
@@ -213,9 +211,7 @@ onMounted(() => {
                         data-origin="tl"
                         data-position="normal"
                       >
-                        Enthusiastically underwhelm quality benefits rather than
-                        professional "outside the box" thinking. Distinctively
-                        network highly efficient leadership skills
+                        Comunidad parroquial al servicio de Dios y de los hermanos, proclamando el Evangelio con amor y entrega
                       </div>
                       <div
                         class="ms-layer msp-cn-3-8"
@@ -233,7 +229,7 @@ onMounted(() => {
                         data-origin="tl"
                         data-position="normal"
                       >
-                        A POWERFUL RELIGION THEME
+                        DIÓCESIS DE SANTA ANA · EL SALVADOR
                       </div>
                       <div
                         class="ms-layer msp-cn-3-7"
@@ -251,7 +247,7 @@ onMounted(() => {
                         data-origin="tl"
                         data-position="normal"
                       >
-                        PEACE
+                        FE · ESPERANZA · CARIDAD
                       </div>
                     </div>
 
@@ -303,7 +299,7 @@ onMounted(() => {
                         data-offset-y="453"
                         data-origin="tl"
                         data-position="normal"
-                        >GET HELP NOW</a
+                        >CONÓCENOS</a
                       >
                       <div
                         class="ms-layer msp-cn-1-13"
@@ -320,9 +316,7 @@ onMounted(() => {
                         data-origin="tl"
                         data-position="normal"
                       >
-                        Enthusiastically underwhelm quality benefits rather than
-                        professional "outside the box" thinking. Distinctively
-                        network highly efficient leadership skills
+                        Comunidad parroquial al servicio de Dios y de los hermanos, proclamando el Evangelio con amor y entrega
                       </div>
                       <div
                         class="ms-layer msp-cn-1-12"
@@ -339,7 +333,7 @@ onMounted(() => {
                         data-origin="tl"
                         data-position="normal"
                       >
-                        IT"S USELESS TO LECTURE A HUMAN
+                        JUNTOS EN LA FE — COMUNIDAD PARROQUIAL
                       </div>
                     </div>
                   </div>

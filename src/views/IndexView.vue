@@ -12,6 +12,7 @@ import RecentPosts from '../components/RecentPosts.vue'
 import Banner2 from '../components/Banner2.vue'
 import Contact from '../components/Contact.vue'
 import Social from '../components/Social.vue'
+import Resources from '../components/Resources.vue'
 
 onMounted(() => {
   // Ocultar el preloader una vez que Vue haya renderizado el DOM
@@ -62,6 +63,9 @@ onMounted(() => {
       
 
       <!-- <div class="clearfix"></div> -->
+
+      <!-- Recursos Religiosos -->
+      <Resources></Resources>
 
       <Social></Social>
 

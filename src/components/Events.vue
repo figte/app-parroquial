@@ -1,447 +1,317 @@
 <template>
-   <!--  section padding start  -->
-      <section class="section-padding" id="events">
-        <div class="container">
-          <div class="content-section">
-            <div class="content-wrapper">
-              <h2 class="section-title">Próximos Eventos</h2>
-
-              <div class="section-detail">
-                Únase a nuestra comunidad en los distintos eventos parroquiales, retiros espirituales y celebraciones litúrgicas durante el año.
-              </div>
-              <!-- /.section-detail -->
-
-              <!-- all event start  -->
-              <div class="col-md-4">
-                <div class="all-event">
-                  <div class="event-post">
-                    <div class="feature-img">
-                      <img
-                        width="300"
-                        height="206"
-                        src="/assets/images/09/gallery271-300x206.jpg"
-                        class="attachment-medium wp-post-image"
-                        alt="gallery27"
-                      />
-                    </div>
-                    <!-- end feature img -->
-
-                    <div class="events-date">
-                      <span class="event-date">10</span>
-                      <br />
-                      <span class="event-month">Nov</span>
-                    </div>
-                    <!-- end event date -->
-
-                    <h2 class="uppercase">
-                      <a href="#" title="Open Rededication"
-                        >Open Rededication</a
-                      >
-                    </h2>
-
-                    <div class="event-period">
-                      <div class="row">
-                        <p class="col-md-10 col-xs-10 period-session">
-                          <i class="fa fa-clock-o"></i> 10am - 12pm
-                          <br />
-                          <i class="fa fa-map-marker"></i> PO Box 16122, Collins
-                          Street
-                        </p>
-
-                        <p class="col-md-2 col-xs-2 comments-share">
-                          <span class="cmnt"
-                            ><i class="fa fa-comments-o"></i>
-                            <a href="/assets/index-1.htm?p=1#comments">10</a></span
-                          >
-                          <i class="fa fa-share-alt">
-                            <span class="social-button">
-                              <a
-                                href="#"
-                                onclick="window.open(this.href); return false;"
-                                ><i class="fa fa-facebook"></i
-                              ></a>
-                              <a
-                                href="#"
-                                title="Share this post on Twitter!"
-                                target="_blank"
-                                ><i class="fa fa-twitter"></i
-                              ></a>
-                              <a
-                                href="#"
-                                title="Share this post on google plus!"
-                                target="_blank"
-                                ><i class="fa fa-google-plus"></i
-                              ></a>
-                              <a
-                                class="linkedin"
-                                href="#"
-                                title="Share on LinkedIn"
-                                rel="external nofollow"
-                                target="_blank"
-                                ><i class="fa fa-linkedin"></i
-                              ></a>
-                              <a
-                                class="pinterest"
-                                href="#"
-                                title="Pinterest"
-                                rel="nofollow"
-                                target="_blank"
-                                ><i class="fa fa-pinterest"></i
-                              ></a>
-                            </span>
-                          </i>
-                        </p>
-                        <!-- /.comments-share -->
-                      </div>
-                      <!-- end row -->
-                    </div>
-                    <!-- /.event-period -->
-
-                    <div class="event-description">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore consectetur
-                      adipisicing elit
-                    </div>
-                    <!-- event description -->
-                  </div>
-                  <!-- end event post -->
-                </div>
-                <!-- end all event -->
-              </div>
-              <!-- end col md 4 -->
-
-              <!-- all event start  -->
-              <div class="col-md-4">
-                <div class="all-event">
-                  <div class="event-post">
-                    <div class="feature-img">
-                      <img
-                        width="300"
-                        height="206"
-                        src="/assets/images/09/event5-300x206.jpg"
-                        class="attachment-medium wp-post-image"
-                        alt="event5"
-                      />
-                    </div>
-
-                    <div class="events-date">
-                      <span class="event-date">10</span>
-                      <br />
-                      <span class="event-month">Jan</span>
-                    </div>
-                    <h2 class="uppercase">
-                      <a href="#" title="Big Event This Year"
-                        >Big Event This Year</a
-                      >
-                    </h2>
-
-                    <div class="event-period">
-                      <div class="row">
-                        <p class="col-md-10 col-xs-10 period-session">
-                          <i class="fa fa-clock-o"></i> 02pm - 04pm
-                          <br />
-                          <i class="fa fa-map-marker"></i> PO Box 16122, Collins
-                          Street
-                        </p>
-                        <p class="col-md-2 col-xs-2 comments-share">
-                          <span class="cmnt"
-                            ><i class="fa fa-comments-o"></i>
-                            <a href="index-1.htm?p=1#comments">10</a></span
-                          >
-                          <i class="fa fa-share-alt">
-                            <span class="social-button">
-                              <a
-                                href="#"
-                                onclick="window.open(this.href); return false;"
-                                ><i class="fa fa-facebook"></i
-                              ></a>
-                              <a
-                                href="#"
-                                title="Share this post on Twitter!"
-                                target="_blank"
-                                ><i class="fa fa-twitter"></i
-                              ></a>
-                              <a
-                                href="#"
-                                title="Share this post on google plus!"
-                                target="_blank"
-                                ><i class="fa fa-google-plus"></i
-                              ></a>
-                              <a
-                                class="linkedin"
-                                href="#"
-                                title="Share on LinkedIn"
-                                rel="external nofollow"
-                                target="_blank"
-                                ><i class="fa fa-linkedin"></i
-                              ></a>
-                              <a
-                                class="pinterest"
-                                href="#"
-                                title="Pinterest"
-                                rel="nofollow"
-                                target="_blank"
-                                ><i class="fa fa-pinterest"></i
-                              ></a>
-                            </span>
-                          </i>
-                        </p>
-                        <!-- /.comments-share -->
-                      </div>
-                    </div>
-                    <!-- /.event-period -->
-
-                    <div class="event-description">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore consectetur
-                      adipisicing elit
-                    </div>
-                    <!-- event desc  -->
-                  </div>
-                  <!-- end event post -->
-                </div>
-                <!-- end all event -->
-              </div>
-              <!-- end col md 4 -->
-
-              <!-- all event start  -->
-              <div class="col-md-4">
-                <div class="all-event">
-                  <div class="event-post">
-                    <div class="feature-img">
-                      <img
-                        width="300"
-                        height="206"
-                        src="/assets/images/09/event4-300x206.jpg"
-                        class="attachment-medium wp-post-image"
-                        alt="event4"
-                      />
-                    </div>
-                    <div class="events-date">
-                      <span class="event-date">16</span>
-                      <br />
-                      <span class="event-month">Dec</span>
-                    </div>
-                    <h2 class="uppercase">
-                      <a href="#" title="Church Evert">Church Evert</a>
-                    </h2>
-                    <div class="event-period">
-                      <div class="row">
-                        <p class="col-md-10 col-xs-10 period-session">
-                          <i class="fa fa-clock-o"></i> 08am - 11am
-                          <br />
-                          <i class="fa fa-map-marker"></i> PO Box 16122, Collins
-                          Street
-                        </p>
-                        <p class="col-md-2 col-xs-2 comments-share">
-                          <span class="cmnt"
-                            ><i class="fa fa-comments-o"></i>
-                            <a href="index-1.htm?p=1#comments">10</a></span
-                          >
-                          <i class="fa fa-share-alt">
-                            <span class="social-button">
-                              <a
-                                href="#"
-                                onclick="window.open(this.href); return false;"
-                                ><i class="fa fa-facebook"></i
-                              ></a>
-                              <a
-                                href="#"
-                                title="Share this post on Twitter!"
-                                target="_blank"
-                                ><i class="fa fa-twitter"></i
-                              ></a>
-                              <a
-                                href="#"
-                                title="Share this post on google plus!"
-                                target="_blank"
-                                ><i class="fa fa-google-plus"></i
-                              ></a>
-                              <a
-                                class="linkedin"
-                                href="#"
-                                title="Share on LinkedIn"
-                                rel="external nofollow"
-                                target="_blank"
-                                ><i class="fa fa-linkedin"></i
-                              ></a>
-                              <a
-                                class="pinterest"
-                                href="#"
-                                title="Pinterest"
-                                rel="nofollow"
-                                target="_blank"
-                                ><i class="fa fa-pinterest"></i
-                              ></a>
-                            </span>
-                          </i>
-                        </p>
-                        <!-- /.comments-share -->
-                      </div>
-                    </div>
-                    <!-- /.event-period -->
-                    <div class="event-description">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore consectetur
-                      adipisicing elit
-                    </div>
-                    <!-- event desc  -->
-                  </div>
-                  <!-- end event post -->
-                </div>
-                <!-- end all event -->
-              </div>
-              <!-- end col md 4 -->
-            </div>
-            <!-- end conent wrapper -->
+  <!-- Calendario Litúrgico Católico -->
+  <section class="section-padding" id="events">
+    <div class="container">
+      <div class="content-section">
+        <div class="content-wrapper">
+          <h2 class="section-title">Calendario Litúrgico 2026</h2>
+          <div class="section-detail">
+            Celebramos el Año Litúrgico siguiendo los tiempos de la Iglesia Católica.
+            Aquí encontrará las principales solemnidades y fiestas del año.
           </div>
-          <!-- end content secton -->
-        </div>
-        <!-- end container -->
-      </section>
 
-      <!--  full width start  -->
-      <div class="full-width">
-        <div class="row-fluid">
-          <div class="content-section">
-            <div class="content-wrapper">
-              <section class="shedule section-padding">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <h2 class="section-title">Festival Schedule</h2>
-                      <!-- /.section-title -->
-                      <div class="section-detail">
-                        <p>
-                          Dramatically strategize economically sound action
-                          items for e-business niches. Quickly re-engineer
-                          24/365 potentialities before.
-                        </p>
-
-                        <p>
-                          Holisticly extend sticky partnerships and cross
-                          functional markets. Monotonectally.
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-md-8">
-                      <div class="shedule-list col-md-12">
-                        <div
-                          class="shedule-time shedule-before col-md-6 col-xs-12"
-                        >
-                          <div class="schedule-name col-xs-7">
-                            <h3>Christmas</h3>
-                            <span>26 June at 6:30 am</span>
-                          </div>
-                          <div
-                            class="clock_counter schedule-time col-xs-5"
-                            data-time="04:30:00"
-                          ></div>
-                        </div>
-                        <div class="shedule-time col-md-6 col-xs-12">
-                          <div class="schedule-name col-xs-7">
-                            <h3>Holy Cross Day</h3>
-                            <span>12 December at 8.00 AM</span>
-                          </div>
-                          <div
-                            class="clock_counter schedule-time col-xs-5"
-                            data-time="13:00:00"
-                          ></div>
-                        </div>
-                        <div
-                          class="shedule-time shedule-before col-md-6 col-xs-12"
-                        >
-                          <div class="schedule-name col-xs-7">
-                            <h3>ST. Patrick’s Day</h3>
-                            <span>26 June at 6:30 am</span>
-                          </div>
-                          <div
-                            class="clock_counter schedule-time col-xs-5"
-                            data-time="17:00:00"
-                          ></div>
-                        </div>
-                        <div class="shedule-time col-md-6 col-xs-12">
-                          <div class="schedule-name col-xs-7">
-                            <h3>Candlemas</h3>
-                            <span>26 June at 6:30 am</span>
-                          </div>
-                          <div
-                            class="clock_counter schedule-time col-xs-5"
-                            data-time="18:30:00"
-                          ></div>
-                        </div>
-                        <div
-                          class="
-                            shedule-time shedule-before shedule-after
-                            col-md-6 col-xs-12
-                            no-margin
-                          "
-                        >
-                          <div class="schedule-name col-xs-7">
-                            <h3>Christmas Eve</h3>
-                            <span>26 June at 6:30 am</span>
-                          </div>
-                          <div
-                            class="clock_counter schedule-time col-xs-5"
-                            data-time="20:30:00"
-                          ></div>
-                        </div>
-                        <div
-                          class="
-                            shedule-time shedule-after
-                            col-md-6 col-xs-12
-                            no-margin
-                            responsive-fix
-                          "
-                        >
-                          <div class="schedule-name col-xs-7">
-                            <h3>Ascension of Jes</h3>
-                            <span>26 June at 6:30 am</span>
-                          </div>
-                          <div
-                            class="clock_counter schedule-time col-xs-5"
-                            data-time="12:30:00"
-                          ></div>
-                        </div>
-                        <!-- /.shedule-list -->
-                      </div>
-                      <div class="sunrise col-md-6">
-                        <div class="col-md-5">
-                          <img src="/assets/images/sun.png" alt="sunrise" />
-                        </div>
-                        <div class="col-md-7">
-                          <h2>SUNRISE</h2>
-                          <span>5.10 AM</span>
-                        </div>
-                      </div>
-                      <div class="sunrise sunset col-md-6">
-                        <div class="col-md-5">
-                          <img src="/assets/images/sun2.png" alt="sunset" />
-                        </div>
-                        <div class="col-md-7">
-                          <h2>SUNSET</h2>
-                          <span>6.30 PM</span>
-                        </div>
-                      </div>
-                    </div>
+          <!-- Próximas Celebraciones Destacadas -->
+          <div class="upcoming-feasts">
+            <h3 class="subsection-title"><i class="fa fa-star"></i> Próximas Celebraciones</h3>
+            <div class="row">
+              <!-- Domingo de Ramos -->
+              <div class="col-md-4">
+                <div class="feast-card feast-red">
+                  <div class="feast-date-box">
+                    <span class="feast-day">29</span>
+                    <span class="feast-month">Mar</span>
                   </div>
-                  <!-- /.row -->
+                  <div class="feast-info">
+                    <h4>Domingo de Ramos</h4>
+                    <p>Entrada de Jesús a Jerusalén. Inicio de la Semana Santa.</p>
+                    <span class="feast-badge badge-red">Semana Santa</span>
+                  </div>
                 </div>
-                <!-- /.container -->
-              </section>
+              </div>
+              <!-- Triduo Pascual -->
+              <div class="col-md-4">
+                <div class="feast-card feast-red">
+                  <div class="feast-date-box">
+                    <span class="feast-day">2–5</span>
+                    <span class="feast-month">Abr</span>
+                  </div>
+                  <div class="feast-info">
+                    <h4>Triduo Pascual</h4>
+                    <p>Jueves Santo · Viernes Santo · Vigilia Pascual · Resurrección del Señor</p>
+                    <span class="feast-badge badge-gold">Pascua</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Patronal -->
+              <div class="col-md-4">
+                <div class="feast-card feast-gold">
+                  <div class="feast-date-box">
+                    <span class="feast-day">13</span>
+                    <span class="feast-month">Ago</span>
+                  </div>
+                  <div class="feast-info">
+                    <h4>Fiesta Patronal</h4>
+                    <p>Nuestra Señora de El Refugio — Fiesta patronal de nuestra parroquia.</p>
+                    <span class="feast-badge badge-gold">Patronal</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <!-- end content wrapper -->
           </div>
-          <!-- end content section -->
+
+          <!-- Calendario Completo 2026 -->
+          <div class="full-calendar">
+            <h3 class="subsection-title"><i class="fa fa-calendar"></i> Calendario Completo 2026</h3>
+            <div class="row">
+              <!-- Columna 1: Enero – Abril -->
+              <div class="col-md-6">
+                <div class="calendar-month">
+                  <div class="month-header month-white">Enero</div>
+                  <ul class="feast-list">
+                    <li><span class="feast-dot dot-white"></span><strong>6 Ene</strong> — Epifanía del Señor (Reyes Magos)</li>
+                    <li><span class="feast-dot dot-white"></span><strong>11 Ene</strong> — Bautismo del Señor</li>
+                  </ul>
+                </div>
+                <div class="calendar-month">
+                  <div class="month-header month-purple">Febrero — Cuaresma</div>
+                  <ul class="feast-list">
+                    <li><span class="feast-dot dot-white"></span><strong>2 Feb</strong> — Presentación del Señor (Candelaria)</li>
+                    <li><span class="feast-dot dot-purple"></span><strong>18 Feb</strong> — Miércoles de Ceniza ✝ Inicio de Cuaresma</li>
+                  </ul>
+                </div>
+                <div class="calendar-month">
+                  <div class="month-header month-purple">Marzo — Cuaresma / Semana Santa</div>
+                  <ul class="feast-list">
+                    <li><span class="feast-dot dot-purple"></span><strong>19 Mar</strong> — San José, Esposo de la Virgen María</li>
+                    <li><span class="feast-dot dot-purple"></span><strong>25 Mar</strong> — Anunciación del Señor</li>
+                    <li><span class="feast-dot dot-red"></span><strong>29 Mar</strong> — Domingo de Ramos 🌿</li>
+                  </ul>
+                </div>
+                <div class="calendar-month">
+                  <div class="month-header month-gold">Abril — Pascua</div>
+                  <ul class="feast-list">
+                    <li><span class="feast-dot dot-red"></span><strong>2 Abr</strong> — Jueves Santo</li>
+                    <li><span class="feast-dot dot-red"></span><strong>3 Abr</strong> — Viernes Santo de la Pasión</li>
+                    <li><span class="feast-dot dot-red"></span><strong>4 Abr</strong> — Vigilia Pascual (Sábado Santo)</li>
+                    <li><span class="feast-dot dot-gold"></span><strong>5 Abr</strong> — Domingo de Resurrección ✝ ¡Aleluya!</li>
+                    <li><span class="feast-dot dot-white"></span><strong>12 Abr</strong> — Domingo de la Divina Misericordia</li>
+                  </ul>
+                </div>
+                <div class="calendar-month">
+                  <div class="month-header month-white">Mayo — Tiempo Pascual</div>
+                  <ul class="feast-list">
+                    <li><span class="feast-dot dot-white"></span><strong>14 May</strong> — Ascensión del Señor</li>
+                    <li><span class="feast-dot dot-red"></span><strong>24 May</strong> — Pentecostés 🕊</li>
+                    <li><span class="feast-dot dot-white"></span><strong>31 May</strong> — Santísima Trinidad</li>
+                  </ul>
+                </div>
+                <div class="calendar-month">
+                  <div class="month-header month-white">Junio</div>
+                  <ul class="feast-list">
+                    <li><span class="feast-dot dot-white"></span><strong>4 Jun</strong> — Corpus Christi (Santísimo Cuerpo y Sangre)</li>
+                    <li><span class="feast-dot dot-white"></span><strong>13 Jun</strong> — Sagrado Corazón de Jesús</li>
+                    <li><span class="feast-dot dot-red"></span><strong>29 Jun</strong> — San Pedro y San Pablo Apóstoles</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Columna 2: Julio – Diciembre -->
+              <div class="col-md-6">
+                <div class="calendar-month">
+                  <div class="month-header month-green">Julio — Tiempo Ordinario</div>
+                  <ul class="feast-list">
+                    <li><span class="feast-dot dot-white"></span><strong>16 Jul</strong> — Nuestra Señora del Carmen</li>
+                    <li><span class="feast-dot dot-white"></span><strong>25 Jul</strong> — Santiago Apóstol</li>
+                  </ul>
+                </div>
+                <div class="calendar-month">
+                  <div class="month-header month-gold">Agosto — Fiesta Patronal</div>
+                  <ul class="feast-list">
+                    <li><span class="feast-dot dot-white"></span><strong>6 Ago</strong> — Transfiguración del Señor</li>
+                    <li><span class="feast-dot dot-gold"></span><strong>13 Ago</strong> — ★ Nuestra Señora de El Refugio (PATRONAL)</li>
+                    <li><span class="feast-dot dot-white"></span><strong>15 Ago</strong> — Asunción de la Santísima Virgen María</li>
+                    <li><span class="feast-dot dot-white"></span><strong>22 Ago</strong> — María Reina</li>
+                  </ul>
+                </div>
+                <div class="calendar-month">
+                  <div class="month-header month-white">Septiembre</div>
+                  <ul class="feast-list">
+                    <li><span class="feast-dot dot-white"></span><strong>8 Sep</strong> — Natividad de la Santísima Virgen María</li>
+                    <li><span class="feast-dot dot-white"></span><strong>14 Sep</strong> — Exaltación de la Santa Cruz</li>
+                    <li><span class="feast-dot dot-white"></span><strong>15 Sep</strong> — Nuestra Señora de los Dolores</li>
+                  </ul>
+                </div>
+                <div class="calendar-month">
+                  <div class="month-header month-white">Octubre</div>
+                  <ul class="feast-list">
+                    <li><span class="feast-dot dot-white"></span><strong>7 Oct</strong> — Nuestra Señora del Rosario</li>
+                    <li><span class="feast-dot dot-red"></span><strong>28 Oct</strong> — San Simón y San Judas Apóstoles</li>
+                  </ul>
+                </div>
+                <div class="calendar-month">
+                  <div class="month-header month-white">Noviembre</div>
+                  <ul class="feast-list">
+                    <li><span class="feast-dot dot-white"></span><strong>1 Nov</strong> — Solemnidad de Todos los Santos</li>
+                    <li><span class="feast-dot dot-purple"></span><strong>2 Nov</strong> — Conmemoración de los Fieles Difuntos</li>
+                    <li><span class="feast-dot dot-white"></span><strong>22 Nov</strong> — Cristo Rey del Universo</li>
+                    <li><span class="feast-dot dot-purple"></span><strong>29 Nov</strong> — I Domingo de Adviento ★ Nuevo Año Litúrgico</li>
+                  </ul>
+                </div>
+                <div class="calendar-month">
+                  <div class="month-header month-purple">Diciembre — Adviento / Navidad</div>
+                  <ul class="feast-list">
+                    <li><span class="feast-dot dot-white"></span><strong>8 Dic</strong> — Inmaculada Concepción de María</li>
+                    <li><span class="feast-dot dot-white"></span><strong>12 Dic</strong> — Nuestra Señora de Guadalupe</li>
+                    <li><span class="feast-dot dot-white"></span><strong>24 Dic</strong> — Nochebuena — Misa del Gallo</li>
+                    <li><span class="feast-dot dot-gold"></span><strong>25 Dic</strong> — ★ Navidad del Señor ¡Aleluya!</li>
+                    <li><span class="feast-dot dot-white"></span><strong>28 Dic</strong> — Santos Inocentes</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Leyenda de colores litúrgicos -->
+            <div class="liturgical-legend">
+              <h4>Colores Litúrgicos</h4>
+              <div class="legend-items">
+                <span class="legend-item"><span class="legend-dot dot-purple"></span> Morado — Adviento &amp; Cuaresma</span>
+                <span class="legend-item"><span class="legend-dot dot-white"></span> Blanco — Fiestas del Señor &amp; de María</span>
+                <span class="legend-item"><span class="legend-dot dot-red"></span> Rojo — Semana Santa &amp; Mártires</span>
+                <span class="legend-item"><span class="legend-dot dot-green"></span> Verde — Tiempo Ordinario</span>
+                <span class="legend-item"><span class="legend-dot dot-gold"></span> Oro — Solemnidades Especiales</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- end row fluid -->
       </div>
-      <!-- end full width -->
-
+    </div>
+  </section>
 </template>
 
-
-
-<style>
-
+<style scoped>
+.upcoming-feasts {
+  margin-bottom: 40px;
+}
+.subsection-title {
+  font-size: 20px;
+  color: #8b0000;
+  margin: 30px 0 20px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #eee;
+}
+.subsection-title .fa {
+  margin-right: 8px;
+}
+.feast-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 18px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border-left: 5px solid #8b0000;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.09);
+  transition: transform 0.2s;
+}
+.feast-card:hover {
+  transform: translateY(-3px);
+}
+.feast-red { border-left-color: #c0392b; }
+.feast-gold { border-left-color: #d4a017; }
+.feast-date-box {
+  background: #8b0000;
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: center;
+  min-width: 60px;
+  flex-shrink: 0;
+}
+.feast-red .feast-date-box { background: #c0392b; }
+.feast-gold .feast-date-box { background: #d4a017; }
+.feast-day { display: block; font-size: 22px; font-weight: 800; line-height: 1; }
+.feast-month { display: block; font-size: 13px; font-weight: 600; text-transform: uppercase; }
+.feast-info h4 { margin: 0 0 6px; font-size: 16px; font-weight: 700; color: #333; }
+.feast-info p { margin: 0 0 8px; font-size: 13px; color: #666; }
+.feast-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.badge-red { background: #c0392b; color: #fff; }
+.badge-gold { background: #d4a017; color: #fff; }
+/* Full Calendar */
+.full-calendar { margin-top: 10px; }
+.calendar-month { margin-bottom: 20px; }
+.month-header {
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  color: #fff;
+}
+.month-white   { background: #555; }
+.month-purple  { background: #6a1a7a; }
+.month-red     { background: #c0392b; }
+.month-gold    { background: #b8860b; }
+.month-green   { background: #2e7d32; }
+.feast-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.feast-list li {
+  padding: 4px 0;
+  font-size: 13px;
+  color: #444;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.feast-dot, .legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+.dot-white  { background: #888; border: 1px solid #ccc; }
+.dot-purple { background: #7b1fa2; }
+.dot-red    { background: #c0392b; }
+.dot-gold   { background: #d4a017; }
+.dot-green  { background: #388e3c; }
+/* Legend */
+.liturgical-legend {
+  margin-top: 30px;
+  padding: 18px 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+.liturgical-legend h4 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  color: #555;
+  font-weight: 700;
+}
+.legend-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.legend-item {
+  font-size: 12px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
 </style>
