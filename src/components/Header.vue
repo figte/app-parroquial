@@ -1,6 +1,6 @@
 <script setup>
-
 import Navbar from '../components/Navbar.vue'
+const base = import.meta.env.BASE_URL
 </script>
 
 <template>
@@ -34,7 +34,7 @@ import Navbar from '../components/Navbar.vue'
         <div class="col-sm-4 col-xs-12 ">
           <div class="logo text-center">
             <a href="/">
-              <img src="/assets/images/09/logo.png" alt="Parroquia Nuestra Señora de El Refugio" style="max-height:60px;" />
+              <img :src="base + 'assets/images/09/logo.png'" alt="Parroquia Nuestra Señora de El Refugio" style="max-height:60px;" />
             </a>
           </div>
           <!-- /.logo -->

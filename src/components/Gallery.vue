@@ -1,3 +1,7 @@
+<script setup>
+const base = import.meta.env.BASE_URL
+</script>
+
 <template>
     <section class="full-width padding-top" id="galerry">
         <div class="row-fluid">
@@ -38,7 +42,7 @@
                     <img
                       width="1000"
                       height="738"
-                      src="/assets/images/09/gallery9.jpg"
+                      :src="base + 'assets/images/09/gallery9.jpg'"
                       class="attachment-gallery-thumb wp-post-image"
                       alt="gallery9"
                     />
@@ -48,7 +52,7 @@
                           class="boxer"
                           data-boxer-height="500"
                           data-boxer-width="500"
-                          href="/assets/images/09/gallery9.jpg"
+                          :href="base + 'assets/images/09/gallery9.jpg'"
                         >
                           <i class="fa plus-sign"></i>
                         </a>
@@ -61,7 +65,7 @@
                     <img
                       width="1000"
                       height="667"
-                      src="/assets/images/09/gallery10.jpg"
+                      :src="base + 'assets/images/09/gallery10.jpg'"
                       class="attachment-gallery-thumb wp-post-image"
                       alt="gallery10"
                     />
@@ -71,7 +75,7 @@
                           class="boxer"
                           data-boxer-height="500"
                           data-boxer-width="500"
-                          href="/assets/images/09/gallery10.jpg"
+                          :href="base + 'assets/images/09/gallery10.jpg'"
                         >
                           <i class="fa plus-sign"></i>
                         </a>
@@ -86,7 +90,7 @@
                     <img
                       width="1000"
                       height="661"
-                      src="/assets/images/09/gallery8.jpg"
+                      :src="base + 'assets/images/09/gallery8.jpg'"
                       class="attachment-gallery-thumb wp-post-image"
                       alt="gallery8"
                     />
@@ -96,7 +100,7 @@
                           class="boxer"
                           data-boxer-height="500"
                           data-boxer-width="500"
-                          href="/assets/images/09/gallery8.jpg"
+                          :href="base + 'assets/images/09/gallery8.jpg'"
                         >
                           <i class="fa plus-sign"></i>
                         </a>
@@ -111,7 +115,7 @@
                     <img
                       width="1000"
                       height="667"
-                      src="/assets/images/09/gallery7.jpg"
+                      :src="base + 'assets/images/09/gallery7.jpg'"
                       class="attachment-gallery-thumb wp-post-image"
                       alt="gallery7"
                     />
@@ -121,7 +125,7 @@
                           class="boxer"
                           data-boxer-height="500"
                           data-boxer-width="500"
-                          href="/assets/images/09/gallery7.jpg"
+                          :href="base + 'assets/images/09/gallery7.jpg'"
                         >
                           <i class="fa plus-sign"></i>
                         </a>
@@ -136,7 +140,7 @@
                     <img
                       width="1200"
                       height="789"
-                      src="/assets/images/09/gallery6.jpg"
+                      :src="base + 'assets/images/09/gallery6.jpg'"
                       class="attachment-gallery-thumb wp-post-image"
                       alt="gallery6"
                     />
@@ -146,7 +150,7 @@
                           class="boxer"
                           data-boxer-height="500"
                           data-boxer-width="500"
-                          href="/assets/images/09/gallery6.jpg"
+                          :href="base + 'assets/images/09/gallery6.jpg'"
                         >
                           <i class="fa plus-sign"></i>
                         </a>
@@ -161,7 +165,7 @@
                     <img
                       width="1200"
                       height="800"
-                      src="/assets/images/09/gallery5.jpg"
+                      :src="base + 'assets/images/09/gallery5.jpg'"
                       class="attachment-gallery-thumb wp-post-image"
                       alt="gallery5"
                     />
@@ -171,7 +175,7 @@
                           class="boxer"
                           data-boxer-height="500"
                           data-boxer-width="500"
-                          href="/assets/images/09/gallery5.jpg"
+                          :href="base + 'assets/images/09/gallery5.jpg'"
                         >
                           <i class="fa plus-sign"></i>
                         </a>
@@ -186,7 +190,7 @@
                     <img
                       width="1200"
                       height="836"
-                      src="/assets/images/09/gallery4.jpg"
+                      :src="base + 'assets/images/09/gallery4.jpg'"
                       class="attachment-gallery-thumb wp-post-image"
                       alt="gallery4"
                     />
@@ -196,7 +200,7 @@
                           class="boxer"
                           data-boxer-height="500"
                           data-boxer-width="500"
-                          href="/assets/images/09/gallery4.jpg"
+                          :href="base + 'assets/images/09/gallery4.jpg'"
                         >
                           <i class="fa plus-sign"></i>
                         </a>
@@ -211,7 +215,7 @@
                     <img
                       width="1024"
                       height="685"
-                      src="/assets/images/09/gallery3.jpg"
+                      :src="base + 'assets/images/09/gallery3.jpg'"
                       class="attachment-gallery-thumb wp-post-image"
                       alt="gallery3"
                     />
@@ -221,7 +225,7 @@
                           class="boxer"
                           data-boxer-height="500"
                           data-boxer-width="500"
-                          href="/assets/images/09/gallery3.jpg"
+                          :href="base + 'assets/images/09/gallery3.jpg'"
                         >
                           <i class="fa plus-sign"></i>
                         </a>
@@ -236,7 +240,7 @@
                     <img
                       width="1200"
                       height="795"
-                      src="/assets/images/09/gallery2.jpg"
+                      :src="base + 'assets/images/09/gallery2.jpg'"
                       class="attachment-gallery-thumb wp-post-image"
                       alt="gallery2"
                     />
@@ -246,7 +250,7 @@
                           class="boxer"
                           data-boxer-height="500"
                           data-boxer-width="500"
-                          href="/assets/images/09/gallery2.jpg"
+                          :href="base + 'assets/images/09/gallery2.jpg'"
                         >
                           <i class="fa plus-sign"></i>
                         </a>
@@ -261,7 +265,7 @@
                     <img
                       width="1200"
                       height="800"
-                      src="/assets/images/09/gallery1.jpg"
+                      :src="base + 'assets/images/09/gallery1.jpg'"
                       class="attachment-gallery-thumb wp-post-image"
                       alt="gallery1"
                     />
@@ -271,7 +275,7 @@
                           class="boxer"
                           data-boxer-height="500"
                           data-boxer-width="500"
-                          href="/assets/images/09/gallery1.jpg"
+                          :href="base + 'assets/images/09/gallery1.jpg'"
                         >
                           <i class="fa plus-sign"></i>
                         </a>

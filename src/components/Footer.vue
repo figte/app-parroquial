@@ -1,3 +1,7 @@
+<script setup>
+const base = import.meta.env.BASE_URL
+</script>
+
 <template>
         <!-- footer widget start -->
       <div class="footer-widget">
@@ -6,7 +10,7 @@
             <div class="col-md-3">
               <h2 class="widget-title">Nuestra Parroquia</h2>
               <div class="textwidget">
-                <img src="/assets/images/09/Untitled-1.jpg" alt="Parroquia" />
+                <img :src="base + 'assets/images/09/Untitled-1.jpg'" alt="Parroquia" />
                 <br />
                 <br />
                 Comunidad parroquial católica al servicio de Dios y de los hermanos, proclamando el Evangelio con amor y entrega.
@@ -46,7 +50,7 @@
                   <img
                     width="150"
                     height="150"
-                    src="/assets/images/09/02-150x150.jpg"
+                    :src="base + 'assets/images/09/02-150x150.jpg'"
                     class="attachment-thumbnail wp-post-image"
                     alt="02"
                   />
@@ -59,7 +63,7 @@
                   <img
                     width="150"
                     height="150"
-                    src="/assets/images/09/03-150x150.jpg"
+                    :src="base + 'assets/images/09/03-150x150.jpg'"
                     class="attachment-thumbnail wp-post-image"
                     alt="03"
                   />
@@ -72,7 +76,7 @@
                   <img
                     width="150"
                     height="150"
-                    src="/assets/images/09/01-150x150.jpg"
+                    :src="base + 'assets/images/09/01-150x150.jpg'"
                     class="attachment-thumbnail wp-post-image"
                     alt="01"
                   />
@@ -113,7 +117,7 @@
             <div class="clearfix"></div>
             <div class="logo text-center">
               <a href="#"
-                ><img src="/assets/images/09/logo.png" alt="Peace"
+                ><img :src="base + 'assets/images/09/logo.png'" alt="Peace"
               /></a>
             </div>
             <!-- /.logo -->
