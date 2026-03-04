@@ -5,6 +5,7 @@
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
+              <a class="navbar-brand" href="#home">Web Parroquial</a>
               <button
                 type="button"
                 class="navbar-toggle collapsed"
@@ -125,5 +126,37 @@
 </template>
 
 <style>
+/* Estilo de la marca en la barra de navegación */
+#top-section #peace-menu .navbar-brand {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 15px 10px;
+  line-height: 20px;
+}
+#top-section #peace-menu .navbar-brand:hover,
+#top-section #peace-menu .navbar-brand:focus {
+  color: #cccccc;
+}
 
+/* En desktop (≥768px) ocultar el brand para no duplicar con el logo del header */
+@media (min-width: 768px) {
+  #top-section #peace-menu .navbar-brand {
+    display: none;
+  }
+}
+
+/* Eliminar padding lateral del header en móvil para efecto edge-to-edge */
+@media (max-width: 767px) {
+  #top-section .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #top-section #peace-menu .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 </style>
