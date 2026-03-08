@@ -18,48 +18,6 @@ const base = import.meta.env.BASE_URL
         </div>
       </div>
 
-      <div class="container-fluid ">
-        <div class="col-sm-4 hidden-xs address">
-          <div class="pull-left">
-            <ul>
-              <li><i class="fa fa-phone"></i> +503 2413-0000</li>
-              <li><i class="fa fa-envelope-o"></i> parroquia@refugioahuachapan.org</li>
-              <li><i class="fa fa-map-marker"></i> Ahuachapán, El Salvador</li>
-            </ul>
-          </div>
-          <!-- pull left  -->
-        </div>
-        <!-- /.address -->
-
-        <div class="col-sm-4 col-xs-12 ">
-          <div class="logo text-center">
-            <a href="/">
-              <img :src="base + 'assets/images/09/logo.png'" alt="Parroquia Nuestra Señora de El Refugio" style="max-height:60px;" />
-            </a>
-          </div>
-          <!-- /.logo -->
-        </div>
-
-        <div class="social-search pull-right hidden-xs">
-          <ul>
-            <li>
-              <a href="#social" title="Facebook"><i class="fa fa-facebook"></i><span></span></a>
-            </li>
-            <li>
-              <a href="#social" title="Instagram"><i class="fa fa-instagram"></i><span></span></a>
-            </li>
-            <li>
-              <a href="#social" title="YouTube"><i class="fa fa-youtube-play"></i><span></span></a>
-            </li>
-            <li>
-              <a href="#social" title="WhatsApp"><i class="fa fa-whatsapp"></i><span></span></a>
-            </li>
-          </ul>
-        </div>
-        <!-- /.social-search -->
-      </div>
-      <!-- /.container -->
-
      <!-- Navbar -->
     <Navbar></Navbar>
 

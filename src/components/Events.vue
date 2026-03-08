@@ -24,17 +24,27 @@ async function loadCalendar() {
   loading.value = true
   apiError.value = false
   apiDays.value = []
-  try {
-    const res = await fetch(
-      `https://calapi.inadiutorium.cz/api/v0/en/calendars/general-la/${selectedYear.value}/${selectedMonth.value}`
-    )
-    if (!res.ok) throw new Error()
-    apiDays.value = await res.json()
-  } catch {
-    apiError.value = true
-  } finally {
-    loading.value = false
+
+  const directUrl = `https://calapi.inadiutorium.cz/api/v0/en/calendars/general-la/${selectedYear.value}/${selectedMonth.value}`
+  const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(directUrl)}`
+
+  for (const url of [directUrl, proxyUrl]) {
+    try {
+      const res = await fetch(url, { signal: AbortSignal.timeout(8000) })
+      if (!res.ok) continue
+      const data = await res.json()
+      if (Array.isArray(data)) {
+        apiDays.value = data
+        loading.value = false
+        return
+      }
+    } catch {
+      // intentar siguiente URL
+    }
   }
+
+  apiError.value = true
+  loading.value = false
 }
 
 const seasonOfMonth = computed(() => {
