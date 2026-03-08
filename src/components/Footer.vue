@@ -6,19 +6,6 @@ const base = import.meta.env.BASE_URL
         <!-- footer widget start -->
       <div class="footer-widget">
         <div class="container">
-          <aside id="text-2" class="widget widget_text">
-            <div class="col-md-3">
-              <h2 class="widget-title">Nuestra Parroquia</h2>
-              <div class="textwidget">
-                <img :src="base + 'assets/images/09/Untitled-1.jpg'" alt="Parroquia" />
-                <br />
-                <br />
-                Comunidad parroquial católica al servicio de Dios y de los hermanos, proclamando el Evangelio con amor y entrega.
-              </div>
-            </div>
-            <!-- end col md 3 -->
-          </aside>
-
           <aside id="tag_cloud-4" class="widget widget_tag_cloud">
             <div class="col-md-3">
               <h2 class="widget-title">Temas</h2>
@@ -124,7 +111,7 @@ const base = import.meta.env.BASE_URL
 
             <div class="copyright">
               <p>
-                Copyright © 2026 Parroquia Católica | Todos los derechos reservados
+                Parroquia <strong>Nuestra Señora del Refugio</strong> &mdash; Copyright © 2026 | Todos los derechos reservados
               </p>
             </div>
             <!-- .copyright -->
