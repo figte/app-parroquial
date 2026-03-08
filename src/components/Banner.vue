@@ -338,6 +338,117 @@ onMounted(() => {
                         JUNTOS EN LA FE — COMUNIDAD PARROQUIAL
                       </div>
                     </div>
+
+                    <!-- Slide 4: Altar / Crucifijo INRI -->
+                    <div class="ms-slide" data-delay="8" data-fill-mode="fill">
+                      <img
+                        :src="base + 'assets/images/blank.gif'"
+                        alt="Altar de la Parroquia Nuestra Señora de El Refugio"
+                        :data-src="base + 'assets/images/09/foto-altar.jpg'"
+                      />
+                      <div
+                        class="ms-layer msp-cn-3-1"
+                        data-effect="t(true,0,151,602,n,n,n,n,n,n,n,n,n,n,n)"
+                        data-delay="1687"
+                        data-ease="easeOutQuint"
+                        data-hide-effect="t(true,n,n,n,90,n,n,n,n,n,n,n,n,n,n)"
+                        data-hide-duration="1000"
+                        data-hide-ease="easeOutQuint"
+                        data-hide-time="6999"
+                        data-offset-x="495"
+                        data-offset-y="263"
+                        data-origin="tl"
+                        data-position="normal"
+                      >PARROQUIA NUESTRA SEÑORA DE EL REFUGIO</div>
+                      <div
+                        class="ms-layer msp-cn-1-4"
+                        data-effect="t(true,220,143,602,n,n,n,n,n,n,n,n,n,n,n)"
+                        data-delay="1662"
+                        data-ease="easeOutQuint"
+                        data-hide-effect="t(true,n,n,n,-90,n,n,n,n,n,n,n,n,n,n)"
+                        data-hide-duration="1000"
+                        data-hide-ease="easeOutQuint"
+                        data-hide-time="6987"
+                        data-offset-x="495"
+                        data-offset-y="321"
+                        data-origin="tl"
+                        data-position="normal"
+                      >Ahuachapán, El Salvador · Diócesis de Santa Ana</div>
+                      <a
+                        href="#mapa"
+                        class="ms-layer msp-cn-1-6 ms-btn ms-btn-circle ms-btn-n msp-preset-btn-137"
+                        data-effect="t(true,n,495,n,n,n,n,n,n,n,n,n,n,n,n)"
+                        data-duration="1087"
+                        data-delay="1500"
+                        data-ease="easeOutQuint"
+                        data-hide-effect="fade"
+                        data-hide-duration="1012"
+                        data-hide-ease="easeOutQuint"
+                        data-hide-time="6987"
+                        data-type="button"
+                        data-offset-x="498"
+                        data-offset-y="454"
+                        data-origin="tl"
+                        data-position="normal"
+                      >CONÓCENOS</a>
+                    </div>
+
+                    <!-- Slide 5: Interior nave de la Parroquia -->
+                    <div class="ms-slide" data-delay="8" data-fill-mode="fill">
+                      <img
+                        :src="base + 'assets/images/blank.gif'"
+                        alt="Interior de la Parroquia — nave principal"
+                        :data-src="base + 'assets/images/09/foto-interior.jpg'"
+                      />
+                      <div
+                        class="ms-layer msp-cn-3-7"
+                        data-effect="t(true,0,53,-1555,n,n,n,n,n,n,n,n,n,n,n)"
+                        data-duration="700"
+                        data-delay="250"
+                        data-ease="easeInOutQuint"
+                        data-hide-effect="fade"
+                        data-hide-duration="1000"
+                        data-hide-ease="easeOutQuint"
+                        data-hide-time="6100"
+                        data-offset-x="453"
+                        data-offset-y="248"
+                        data-origin="tl"
+                        data-position="normal"
+                      >MADRE DE DIOS · ESPERANZA · MISERICORDIA</div>
+                      <div
+                        class="ms-layer msp-cn-3-8"
+                        data-effect="t(true,0,53,-1555,n,n,n,n,n,n,n,n,n,n,n)"
+                        data-duration="700"
+                        data-delay="875"
+                        data-ease="easeOutQuint"
+                        data-hide-effect="fade"
+                        data-hide-duration="1000"
+                        data-hide-ease="easeOutQuint"
+                        data-hide-time="6475"
+                        data-offset-x="455"
+                        data-offset-y="323"
+                        data-origin="tl"
+                        data-position="normal"
+                      >Parroquia Nuestra Señora de El Refugio — Ahuachapán</div>
+                      <a
+                        href="#events"
+                        class="ms-layer msp-cn-1-10 ms-btn ms-btn-circle ms-btn-l msp-preset-btn-127"
+                        data-effect="t(true,0,53,-1555,n,n,n,n,n,n,n,n,n,n,n)"
+                        data-duration="700"
+                        data-delay="1650"
+                        data-ease="easeOutQuint"
+                        data-hide-effect="fade"
+                        data-hide-duration="1000"
+                        data-hide-ease="easeOutQuint"
+                        data-hide-time="6750"
+                        data-type="button"
+                        data-offset-x="456"
+                        data-offset-y="457"
+                        data-origin="tl"
+                        data-position="normal"
+                      >VER CALENDARIO</a>
+                    </div>
+
                   </div>
                   <!-- END MasterSlider Main -->
                 </div>

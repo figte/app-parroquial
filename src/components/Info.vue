@@ -36,15 +36,25 @@
               <h3 class="map-title"><i class="fa fa-map-marker"></i> Cómo Llegarnos</h3>
               <div class="map-wrap">
                 <iframe
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=-89.87%2C13.90%2C-89.82%2C13.94&amp;layer=mapnik&amp;marker=13.9217%2C-89.8450"
-                  title="Mapa de Ahuachapán, El Salvador"
+                  src="https://maps.google.com/maps?q=X7FV%2BXX5+El+Refugio+Ahuachap%C3%A1n+El+Salvador&z=17&output=embed"
+                  title="Parroquia Nuestra Señora de El Refugio — Ahuachapán"
                   style="width:100%; height:320px; border:none; border-radius:10px;"
                   loading="lazy"
+                  allowfullscreen
                 ></iframe>
+                <a
+                  href="https://maps.app.goo.gl/qVTuw9hccRKqjQDi9"
+                  target="_blank"
+                  rel="noopener"
+                  class="gmaps-link"
+                >
+                  <i class="fa fa-map-marker"></i> Ver en Google Maps
+                </a>
                 <p class="map-address">
                   <i class="fa fa-map-marker"></i>
                   <strong>Parroquia Nuestra Señora de El Refugio</strong><br/>
-                  Ahuachapán, El Salvador — Diócesis de Santa Ana<br/>
+                  X7FV+XX5, El Refugio · Ahuachapán, El Salvador<br/>
+                  Diócesis de Santa Ana<br/>
                   <i class="fa fa-phone"></i> +503 2413-0000 &nbsp;|&nbsp;
                   <i class="fa fa-envelope-o"></i> parroquia@refugioahuachapan.org
                 </p>
@@ -189,6 +199,17 @@
   line-height: 1.7;
 }
 .map-address .fa, .map-hours .fa { margin-right: 5px; color: #8b0000; }
+.gmaps-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0 4px;
+  color: #8b0000;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.gmaps-link:hover { text-decoration: underline; }
 
 /* Servicios */
 .services-list { display: flex; flex-direction: column; gap: 10px; }
