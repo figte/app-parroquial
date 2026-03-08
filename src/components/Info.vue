@@ -1,132 +1,4 @@
-<script setup>
-const base = import.meta.env.BASE_URL
-</script>
-
 <template>
-    <!-- what we do start -->
-      <section class="what-we-do" id="info">
-        <div class="container">
-          <div class="col-sm-4">
-            <div class="content-wrapper">
-              <div class="about-us">
-                <div class="service-person">
-                  <img :src="base + 'assets/images/09/personimg03.jpg'" alt="" />
-
-                  <div class="person-details">
-                    <h1>Padre Juan Pablo Rodríguez</h1>
-                    <span>Párroco</span>
-
-                    <div class="person-content">
-                      Bienvenidos a nuestra comunidad parroquial. Juntos caminamos en la fe, esperanza y caridad al servicio del Señor y del prójimo.
-                    </div>
-                    <!-- end person content -->
-
-                    <div class="person-social">
-                      <ul>
-                        <li>
-                          <a href="http://www.facebook.com/codexcoderltd"
-                            ><i class="fa fa-facebook"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="http://twitter.com/CodexCoder"
-                            ><i class="fa fa-twitter"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                      </ul>
-                    </div>
-                    <!-- end person social -->
-                  </div>
-                  <!-- end person details -->
-                </div>
-                <!-- end service person -->
-              </div>
-              <!-- end about us -->
-            </div>
-            <!-- end content wrapper -->
-          </div>
-          <!-- end col sm 4 -->
-
-          <div class="col-sm-1">
-            <div class="content-wrapper">
-              <div class="col-md-1 hidden-sm hidden-xs">
-                <div class="peace-separator"></div>
-              </div>
-              <!-- col md 1 -->
-            </div>
-            <!-- end contant wrapper -->
-          </div>
-          <!-- end col sm 1 -->
-
-          <div class="col-sm-7">
-            <div class="content-wrapper">
-              <div class="about-us">
-                <h2 class="section-title">¿Quiénes Somos?</h2>
-
-                <div class="section-detail">
-                  Somos una comunidad parroquial católica que vive y proclama el Evangelio de Jesucristo. Nuestras puertas están abiertas para todos los que buscan a Dios con corazón sincero.
-                </div>
-                <div class="service-details">
-                  <div class="darson">
-                    <div class="item">
-                      <div class="item-element">
-                        <span class="fa fa-heart"></span>
-                      </div>
-                      <!-- end item element -->
-                    </div>
-                    <!-- end item -->
-                    <div class="head">Eucaristía y Sacramentos</div>
-                    <div class="content">
-                      Celebramos la Santa Misa y los sacramentos como fuente y cumbre de la vida cristiana, nutriendo nuestra fe comunitaria.
-                    </div>
-                  </div>
-                  <!-- end person -->
-
-                  <div class="darson">
-                    <div class="item">
-                      <div class="item-element">
-                        <span class="fa fa-users"></span>
-                      </div>
-                      <!-- end item element -->
-                    </div>
-                    <!-- end item -->
-                    <div class="head">Comunidad y Familia</div>
-                    <div class="content">
-                      Promovemos la fraternidad cristiana, acompañando a las familias en su camino de fe y formación integral.
-                    </div>
-                  </div>
-                  <!-- end person -->
-
-                  <div class="darson">
-                    <div class="item">
-                      <div class="item-element">
-                        <span class="fa fa-hand-o-right"></span>
-                      </div>
-                      <!-- end item element -->
-                    </div>
-                    <!-- end item -->
-                    <div class="head">Servicio y Caridad</div>
-                    <div class="content">
-                      Vivimos el mandato evangélico del amor al prójimo a través de obras de misericordia y servicio a los más necesitados.
-                    </div>
-                  </div>
-                  <!-- end person -->
-                </div>
-                <!-- end service details -->
-              </div>
-              <!-- end about us -->
-            </div>
-            <!-- end wrapper -->
-          </div>
-          <!-- col sm 7 -->
-        </div>
-        <!-- end container -->
-      </section>
-      <!--  end what we do  -->
-
       <!-- Mapa y Servicios Parroquiales -->
       <section class="map-services-section section-padding" id="mapa">
         <div class="container">
@@ -164,15 +36,25 @@ const base = import.meta.env.BASE_URL
               <h3 class="map-title"><i class="fa fa-map-marker"></i> Cómo Llegarnos</h3>
               <div class="map-wrap">
                 <iframe
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=-89.87%2C13.90%2C-89.82%2C13.94&amp;layer=mapnik&amp;marker=13.9217%2C-89.8450"
-                  title="Mapa de Ahuachapán, El Salvador"
+                  src="https://maps.google.com/maps?q=X7FV%2BXX5+El+Refugio+Ahuachap%C3%A1n+El+Salvador&z=17&output=embed"
+                  title="Parroquia Nuestra Señora de El Refugio — Ahuachapán"
                   style="width:100%; height:320px; border:none; border-radius:10px;"
                   loading="lazy"
+                  allowfullscreen
                 ></iframe>
+                <a
+                  href="https://maps.app.goo.gl/qVTuw9hccRKqjQDi9"
+                  target="_blank"
+                  rel="noopener"
+                  class="gmaps-link"
+                >
+                  <i class="fa fa-map-marker"></i> Ver en Google Maps
+                </a>
                 <p class="map-address">
                   <i class="fa fa-map-marker"></i>
                   <strong>Parroquia Nuestra Señora de El Refugio</strong><br/>
-                  Ahuachapán, El Salvador — Diócesis de Santa Ana<br/>
+                  X7FV+XX5, El Refugio · Ahuachapán, El Salvador<br/>
+                  Diócesis de Santa Ana<br/>
                   <i class="fa fa-phone"></i> +503 2413-0000 &nbsp;|&nbsp;
                   <i class="fa fa-envelope-o"></i> parroquia@refugioahuachapan.org
                 </p>
@@ -317,6 +199,17 @@ const base = import.meta.env.BASE_URL
   line-height: 1.7;
 }
 .map-address .fa, .map-hours .fa { margin-right: 5px; color: #8b0000; }
+.gmaps-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0 4px;
+  color: #8b0000;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.gmaps-link:hover { text-decoration: underline; }
 
 /* Servicios */
 .services-list { display: flex; flex-direction: column; gap: 10px; }

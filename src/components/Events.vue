@@ -1,317 +1,336 @@
+<script setup>
+import { ref, computed, onMounted, watch } from 'vue'
+
+const now = new Date()
+const currentYear = now.getFullYear()
+const years = [currentYear - 1, currentYear, currentYear + 1, currentYear + 2]
+
+const MONTH_NAMES = [
+  '', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+]
+const MONTH_SHORT = [
+  '', 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+  'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'
+]
+
+const selectedYear = ref(currentYear)
+const selectedMonth = ref(now.getMonth() + 1)
+const loading = ref(false)
+const apiError = ref(false)
+const apiDays = ref([])
+
+async function loadCalendar() {
+  loading.value = true
+  apiError.value = false
+  apiDays.value = []
+  try {
+    const res = await fetch(
+      `https://calapi.inadiutorium.cz/api/v0/en/calendars/general-la/${selectedYear.value}/${selectedMonth.value}`
+    )
+    if (!res.ok) throw new Error()
+    apiDays.value = await res.json()
+  } catch {
+    apiError.value = true
+  } finally {
+    loading.value = false
+  }
+}
+
+const seasonOfMonth = computed(() => {
+  if (!apiDays.value.length) return null
+  const counts = {}
+  apiDays.value.forEach(d => { counts[d.season] = (counts[d.season] || 0) + 1 })
+  return Object.entries(counts).sort((a, b) => b[1] - a[1])[0]?.[0] || null
+})
+
+const feasts = computed(() => {
+  const result = []
+  if (apiError.value || !apiDays.value.length) return result
+  apiDays.value.forEach(day => {
+    const mmdd = day.date.slice(5)
+    const filtered = day.celebrations.filter(c => c.rank_num <= 3.0)
+    if (mmdd === '08-13') {
+      filtered.unshift({
+        title: '★ FIESTA PATRONAL — Nuestra Señora de El Refugio',
+        colour: 'gold',
+        rank: 'patronal',
+        rank_num: 1.0
+      })
+    }
+    if (filtered.length) {
+      result.push({
+        date: day.date,
+        day: parseInt(day.date.slice(8)),
+        season: day.season,
+        celebrations: filtered
+      })
+    }
+  })
+  return result
+})
+
+function rankLabel(rank) {
+  return {
+    solemnity: 'Solemnidad',
+    feast_of_the_lord: 'Fiesta del Señor',
+    feast: 'Fiesta',
+    memorial: 'Memoria',
+    optional_memorial: 'Mem. Facultativa',
+    sunday_of_advent: 'Dom. de Adviento',
+    sunday_of_lent: 'Dom. de Cuaresma',
+    sunday_of_easter: 'Dom. de Pascua',
+    easter_triduum: 'Triduo Pascual',
+    patronal: 'Fiesta Patronal',
+  }[rank] || rank
+}
+
+function seasonMeta(season) {
+  return {
+    advent:        { label: 'Adviento',        bg: '#6a1a7a', icon: 'fa-star' },
+    christmas:     { label: 'Navidad',          bg: '#b8860b', icon: 'fa-star' },
+    ordinary:      { label: 'Tiempo Ordinario', bg: '#2e7d32', icon: 'fa-leaf' },
+    lent:          { label: 'Cuaresma',         bg: '#5d4037', icon: 'fa-plus-circle' },
+    easter_triduum:{ label: 'Triduo Pascual',   bg: '#c0392b', icon: 'fa-plus-circle' },
+    easter:        { label: 'Tiempo Pascual',   bg: '#b8860b', icon: 'fa-sun-o' },
+  }[season] || { label: season, bg: '#555', icon: 'fa-calendar' }
+}
+
+function colClass(colour) {
+  return {
+    white:  'dot-white',
+    purple: 'dot-purple',
+    red:    'dot-red',
+    green:  'dot-green',
+    rose:   'dot-rose',
+    gold:   'dot-gold',
+  }[colour] || 'dot-white'
+}
+
+onMounted(() => loadCalendar())
+watch([selectedYear, selectedMonth], () => loadCalendar())
+</script>
+
 <template>
-  <!-- Calendario Litúrgico Católico -->
-  <section class="section-padding" id="events">
+  <section class="section-padding cal-section" id="events">
     <div class="container">
-      <div class="content-section">
-        <div class="content-wrapper">
-          <h2 class="section-title">Calendario Litúrgico 2026</h2>
-          <div class="section-detail">
-            Celebramos el Año Litúrgico siguiendo los tiempos de la Iglesia Católica.
-            Aquí encontrará las principales solemnidades y fiestas del año.
+      <h2 class="section-title">Calendario Litúrgico</h2>
+      <div class="section-detail">
+        Consulte las celebraciones del Año Litúrgico. Seleccione el año y el mes.
+      </div>
+
+      <!-- Selector de Año -->
+      <div class="cal-year-bar">
+        <button
+          v-for="y in years" :key="y"
+          class="cal-year-btn"
+          :class="{ active: selectedYear === y }"
+          @click="selectedYear = y"
+        >{{ y }}</button>
+      </div>
+
+      <!-- Selector de Mes -->
+      <div class="cal-month-bar">
+        <button
+          v-for="n in 12" :key="n"
+          class="cal-month-btn"
+          :class="{ active: selectedMonth === n }"
+          @click="selectedMonth = n"
+        >{{ MONTH_SHORT[n] }}</button>
+      </div>
+
+      <!-- Badge Tiempo Litúrgico -->
+      <div
+        v-if="!loading && !apiError && seasonOfMonth"
+        class="season-badge"
+        :style="{ background: seasonMeta(seasonOfMonth).bg }"
+      >
+        <i :class="'fa ' + seasonMeta(seasonOfMonth).icon"></i>
+        {{ MONTH_NAMES[selectedMonth] }} {{ selectedYear }}
+        &mdash; {{ seasonMeta(seasonOfMonth).label }}
+      </div>
+
+      <!-- Cargando -->
+      <div v-if="loading" class="cal-state">
+        <i class="fa fa-spinner fa-spin fa-2x"></i>
+        <p>Cargando calendario litúrgico…</p>
+      </div>
+
+      <!-- Error de API -->
+      <div v-else-if="apiError" class="cal-state cal-error-state">
+        <i class="fa fa-exclamation-circle fa-2x"></i>
+        <p>No se pudo cargar el calendario. Verifique su conexión.</p>
+        <button class="cal-retry-btn" @click="loadCalendar">
+          <i class="fa fa-refresh"></i> Reintentar
+        </button>
+      </div>
+
+      <!-- Sin celebraciones destacadas -->
+      <div v-else-if="!loading && feasts.length === 0" class="cal-state">
+        <i class="fa fa-calendar-o fa-2x"></i>
+        <p>No hay solemnidades ni fiestas destacadas en {{ MONTH_NAMES[selectedMonth] }}.</p>
+      </div>
+
+      <!-- Lista de fiestas -->
+      <div v-else class="feast-table">
+        <div
+          v-for="item in feasts" :key="item.date"
+          class="feast-row"
+          :class="{ 'row-patronal': item.celebrations.some(c => c.rank === 'patronal') }"
+        >
+          <div class="feast-date">
+            <span class="feast-day">{{ item.day }}</span>
+            <span class="feast-mon">{{ MONTH_SHORT[selectedMonth] }}</span>
           </div>
-
-          <!-- Próximas Celebraciones Destacadas -->
-          <div class="upcoming-feasts">
-            <h3 class="subsection-title"><i class="fa fa-star"></i> Próximas Celebraciones</h3>
-            <div class="row">
-              <!-- Domingo de Ramos -->
-              <div class="col-md-4">
-                <div class="feast-card feast-red">
-                  <div class="feast-date-box">
-                    <span class="feast-day">29</span>
-                    <span class="feast-month">Mar</span>
-                  </div>
-                  <div class="feast-info">
-                    <h4>Domingo de Ramos</h4>
-                    <p>Entrada de Jesús a Jerusalén. Inicio de la Semana Santa.</p>
-                    <span class="feast-badge badge-red">Semana Santa</span>
-                  </div>
-                </div>
-              </div>
-              <!-- Triduo Pascual -->
-              <div class="col-md-4">
-                <div class="feast-card feast-red">
-                  <div class="feast-date-box">
-                    <span class="feast-day">2–5</span>
-                    <span class="feast-month">Abr</span>
-                  </div>
-                  <div class="feast-info">
-                    <h4>Triduo Pascual</h4>
-                    <p>Jueves Santo · Viernes Santo · Vigilia Pascual · Resurrección del Señor</p>
-                    <span class="feast-badge badge-gold">Pascua</span>
-                  </div>
-                </div>
-              </div>
-              <!-- Patronal -->
-              <div class="col-md-4">
-                <div class="feast-card feast-gold">
-                  <div class="feast-date-box">
-                    <span class="feast-day">13</span>
-                    <span class="feast-month">Ago</span>
-                  </div>
-                  <div class="feast-info">
-                    <h4>Fiesta Patronal</h4>
-                    <p>Nuestra Señora de El Refugio — Fiesta patronal de nuestra parroquia.</p>
-                    <span class="feast-badge badge-gold">Patronal</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Calendario Completo 2026 -->
-          <div class="full-calendar">
-            <h3 class="subsection-title"><i class="fa fa-calendar"></i> Calendario Completo 2026</h3>
-            <div class="row">
-              <!-- Columna 1: Enero – Abril -->
-              <div class="col-md-6">
-                <div class="calendar-month">
-                  <div class="month-header month-white">Enero</div>
-                  <ul class="feast-list">
-                    <li><span class="feast-dot dot-white"></span><strong>6 Ene</strong> — Epifanía del Señor (Reyes Magos)</li>
-                    <li><span class="feast-dot dot-white"></span><strong>11 Ene</strong> — Bautismo del Señor</li>
-                  </ul>
-                </div>
-                <div class="calendar-month">
-                  <div class="month-header month-purple">Febrero — Cuaresma</div>
-                  <ul class="feast-list">
-                    <li><span class="feast-dot dot-white"></span><strong>2 Feb</strong> — Presentación del Señor (Candelaria)</li>
-                    <li><span class="feast-dot dot-purple"></span><strong>18 Feb</strong> — Miércoles de Ceniza ✝ Inicio de Cuaresma</li>
-                  </ul>
-                </div>
-                <div class="calendar-month">
-                  <div class="month-header month-purple">Marzo — Cuaresma / Semana Santa</div>
-                  <ul class="feast-list">
-                    <li><span class="feast-dot dot-purple"></span><strong>19 Mar</strong> — San José, Esposo de la Virgen María</li>
-                    <li><span class="feast-dot dot-purple"></span><strong>25 Mar</strong> — Anunciación del Señor</li>
-                    <li><span class="feast-dot dot-red"></span><strong>29 Mar</strong> — Domingo de Ramos 🌿</li>
-                  </ul>
-                </div>
-                <div class="calendar-month">
-                  <div class="month-header month-gold">Abril — Pascua</div>
-                  <ul class="feast-list">
-                    <li><span class="feast-dot dot-red"></span><strong>2 Abr</strong> — Jueves Santo</li>
-                    <li><span class="feast-dot dot-red"></span><strong>3 Abr</strong> — Viernes Santo de la Pasión</li>
-                    <li><span class="feast-dot dot-red"></span><strong>4 Abr</strong> — Vigilia Pascual (Sábado Santo)</li>
-                    <li><span class="feast-dot dot-gold"></span><strong>5 Abr</strong> — Domingo de Resurrección ✝ ¡Aleluya!</li>
-                    <li><span class="feast-dot dot-white"></span><strong>12 Abr</strong> — Domingo de la Divina Misericordia</li>
-                  </ul>
-                </div>
-                <div class="calendar-month">
-                  <div class="month-header month-white">Mayo — Tiempo Pascual</div>
-                  <ul class="feast-list">
-                    <li><span class="feast-dot dot-white"></span><strong>14 May</strong> — Ascensión del Señor</li>
-                    <li><span class="feast-dot dot-red"></span><strong>24 May</strong> — Pentecostés 🕊</li>
-                    <li><span class="feast-dot dot-white"></span><strong>31 May</strong> — Santísima Trinidad</li>
-                  </ul>
-                </div>
-                <div class="calendar-month">
-                  <div class="month-header month-white">Junio</div>
-                  <ul class="feast-list">
-                    <li><span class="feast-dot dot-white"></span><strong>4 Jun</strong> — Corpus Christi (Santísimo Cuerpo y Sangre)</li>
-                    <li><span class="feast-dot dot-white"></span><strong>13 Jun</strong> — Sagrado Corazón de Jesús</li>
-                    <li><span class="feast-dot dot-red"></span><strong>29 Jun</strong> — San Pedro y San Pablo Apóstoles</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- Columna 2: Julio – Diciembre -->
-              <div class="col-md-6">
-                <div class="calendar-month">
-                  <div class="month-header month-green">Julio — Tiempo Ordinario</div>
-                  <ul class="feast-list">
-                    <li><span class="feast-dot dot-white"></span><strong>16 Jul</strong> — Nuestra Señora del Carmen</li>
-                    <li><span class="feast-dot dot-white"></span><strong>25 Jul</strong> — Santiago Apóstol</li>
-                  </ul>
-                </div>
-                <div class="calendar-month">
-                  <div class="month-header month-gold">Agosto — Fiesta Patronal</div>
-                  <ul class="feast-list">
-                    <li><span class="feast-dot dot-white"></span><strong>6 Ago</strong> — Transfiguración del Señor</li>
-                    <li><span class="feast-dot dot-gold"></span><strong>13 Ago</strong> — ★ Nuestra Señora de El Refugio (PATRONAL)</li>
-                    <li><span class="feast-dot dot-white"></span><strong>15 Ago</strong> — Asunción de la Santísima Virgen María</li>
-                    <li><span class="feast-dot dot-white"></span><strong>22 Ago</strong> — María Reina</li>
-                  </ul>
-                </div>
-                <div class="calendar-month">
-                  <div class="month-header month-white">Septiembre</div>
-                  <ul class="feast-list">
-                    <li><span class="feast-dot dot-white"></span><strong>8 Sep</strong> — Natividad de la Santísima Virgen María</li>
-                    <li><span class="feast-dot dot-white"></span><strong>14 Sep</strong> — Exaltación de la Santa Cruz</li>
-                    <li><span class="feast-dot dot-white"></span><strong>15 Sep</strong> — Nuestra Señora de los Dolores</li>
-                  </ul>
-                </div>
-                <div class="calendar-month">
-                  <div class="month-header month-white">Octubre</div>
-                  <ul class="feast-list">
-                    <li><span class="feast-dot dot-white"></span><strong>7 Oct</strong> — Nuestra Señora del Rosario</li>
-                    <li><span class="feast-dot dot-red"></span><strong>28 Oct</strong> — San Simón y San Judas Apóstoles</li>
-                  </ul>
-                </div>
-                <div class="calendar-month">
-                  <div class="month-header month-white">Noviembre</div>
-                  <ul class="feast-list">
-                    <li><span class="feast-dot dot-white"></span><strong>1 Nov</strong> — Solemnidad de Todos los Santos</li>
-                    <li><span class="feast-dot dot-purple"></span><strong>2 Nov</strong> — Conmemoración de los Fieles Difuntos</li>
-                    <li><span class="feast-dot dot-white"></span><strong>22 Nov</strong> — Cristo Rey del Universo</li>
-                    <li><span class="feast-dot dot-purple"></span><strong>29 Nov</strong> — I Domingo de Adviento ★ Nuevo Año Litúrgico</li>
-                  </ul>
-                </div>
-                <div class="calendar-month">
-                  <div class="month-header month-purple">Diciembre — Adviento / Navidad</div>
-                  <ul class="feast-list">
-                    <li><span class="feast-dot dot-white"></span><strong>8 Dic</strong> — Inmaculada Concepción de María</li>
-                    <li><span class="feast-dot dot-white"></span><strong>12 Dic</strong> — Nuestra Señora de Guadalupe</li>
-                    <li><span class="feast-dot dot-white"></span><strong>24 Dic</strong> — Nochebuena — Misa del Gallo</li>
-                    <li><span class="feast-dot dot-gold"></span><strong>25 Dic</strong> — ★ Navidad del Señor ¡Aleluya!</li>
-                    <li><span class="feast-dot dot-white"></span><strong>28 Dic</strong> — Santos Inocentes</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- Leyenda de colores litúrgicos -->
-            <div class="liturgical-legend">
-              <h4>Colores Litúrgicos</h4>
-              <div class="legend-items">
-                <span class="legend-item"><span class="legend-dot dot-purple"></span> Morado — Adviento &amp; Cuaresma</span>
-                <span class="legend-item"><span class="legend-dot dot-white"></span> Blanco — Fiestas del Señor &amp; de María</span>
-                <span class="legend-item"><span class="legend-dot dot-red"></span> Rojo — Semana Santa &amp; Mártires</span>
-                <span class="legend-item"><span class="legend-dot dot-green"></span> Verde — Tiempo Ordinario</span>
-                <span class="legend-item"><span class="legend-dot dot-gold"></span> Oro — Solemnidades Especiales</span>
-              </div>
+          <div class="feast-cels">
+            <div v-for="cel in item.celebrations" :key="cel.title" class="cel-item">
+              <span class="cel-dot" :class="colClass(cel.colour)"></span>
+              <span class="cel-title">{{ cel.title }}</span>
+              <span class="cel-rank">{{ rankLabel(cel.rank) }}</span>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Leyenda -->
+      <div class="cal-legend">
+        <span class="legend-item"><span class="ldot dot-purple"></span>Adviento &amp; Cuaresma</span>
+        <span class="legend-item"><span class="ldot dot-white"></span>Señor &amp; María</span>
+        <span class="legend-item"><span class="ldot dot-red"></span>Semana Santa &amp; Mártires</span>
+        <span class="legend-item"><span class="ldot dot-green"></span>Tiempo Ordinario</span>
+        <span class="legend-item"><span class="ldot dot-gold"></span>Fiesta Patronal</span>
+      </div>
+      <p class="cal-attribution">
+        <i class="fa fa-info-circle"></i>
+        Calendario Romano General vía
+        <a href="https://calapi.inadiutorium.cz" target="_blank" rel="noopener">calapi.inadiutorium.cz</a>
+        · La fiesta patronal (13 Ago) se muestra siempre.
+      </p>
     </div>
   </section>
 </template>
 
 <style scoped>
-.upcoming-feasts {
-  margin-bottom: 40px;
-}
-.subsection-title {
-  font-size: 20px;
-  color: #8b0000;
-  margin: 30px 0 20px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid #eee;
-}
-.subsection-title .fa {
-  margin-right: 8px;
-}
-.feast-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  padding: 18px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  border-left: 5px solid #8b0000;
+.cal-section { background: #f9f9fb; }
+.cal-section .section-title { color: #8b0000; }
+.cal-section .section-detail { color: #666; margin-bottom: 24px; }
+
+/* Year bar */
+.cal-year-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.cal-year-btn {
+  padding: 7px 22px;
+  border: 2px solid #8b0000;
   background: #fff;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.09);
-  transition: transform 0.2s;
-}
-.feast-card:hover {
-  transform: translateY(-3px);
-}
-.feast-red { border-left-color: #c0392b; }
-.feast-gold { border-left-color: #d4a017; }
-.feast-date-box {
-  background: #8b0000;
-  color: #fff;
-  border-radius: 8px;
-  padding: 10px 12px;
-  text-align: center;
-  min-width: 60px;
-  flex-shrink: 0;
-}
-.feast-red .feast-date-box { background: #c0392b; }
-.feast-gold .feast-date-box { background: #d4a017; }
-.feast-day { display: block; font-size: 22px; font-weight: 800; line-height: 1; }
-.feast-month { display: block; font-size: 13px; font-weight: 600; text-transform: uppercase; }
-.feast-info h4 { margin: 0 0 6px; font-size: 16px; font-weight: 700; color: #333; }
-.feast-info p { margin: 0 0 8px; font-size: 13px; color: #666; }
-.feast-badge {
-  display: inline-block;
-  padding: 2px 10px;
-  border-radius: 12px;
-  font-size: 11px;
+  color: #8b0000;
+  border-radius: 24px;
   font-weight: 700;
-  text-transform: uppercase;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.18s;
 }
-.badge-red { background: #c0392b; color: #fff; }
-.badge-gold { background: #d4a017; color: #fff; }
-/* Full Calendar */
-.full-calendar { margin-top: 10px; }
-.calendar-month { margin-bottom: 20px; }
-.month-header {
-  font-weight: 700;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 6px 14px;
-  border-radius: 4px;
-  margin-bottom: 8px;
-  color: #fff;
-}
-.month-white   { background: #555; }
-.month-purple  { background: #6a1a7a; }
-.month-red     { background: #c0392b; }
-.month-gold    { background: #b8860b; }
-.month-green   { background: #2e7d32; }
-.feast-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.feast-list li {
-  padding: 4px 0;
+.cal-year-btn.active, .cal-year-btn:hover { background: #8b0000; color: #fff; }
+
+/* Month bar */
+.cal-month-bar { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+.cal-month-btn {
+  padding: 5px 13px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #555;
+  border-radius: 16px;
   font-size: 13px;
-  color: #444;
-  border-bottom: 1px solid #f0f0f0;
-  display: flex;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.cal-month-btn.active, .cal-month-btn:hover { background: #8b0000; color: #fff; border-color: #8b0000; }
+
+/* Season badge */
+.season-badge {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 7px 18px;
+  border-radius: 20px;
+  margin-bottom: 22px;
 }
-.feast-dot, .legend-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  display: inline-block;
+
+/* States */
+.cal-state { text-align: center; padding: 40px 0; color: #999; }
+.cal-state p { margin: 12px 0 0; font-size: 15px; }
+.cal-error-state { color: #c0392b; }
+.cal-retry-btn {
+  margin-top: 14px;
+  padding: 8px 22px;
+  background: #8b0000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
 }
-.dot-white  { background: #888; border: 1px solid #ccc; }
+.cal-retry-btn:hover { background: #a00; }
+
+/* Feast table */
+.feast-table {
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.feast-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fff;
+}
+.feast-row:last-child { border-bottom: none; }
+.feast-row:hover { background: #fdf8f8; }
+.row-patronal { background: #fffbe6 !important; border-left: 4px solid #d4a017; }
+
+.feast-date { min-width: 44px; text-align: center; flex-shrink: 0; }
+.feast-day { display: block; font-size: 22px; font-weight: 800; color: #8b0000; line-height: 1; }
+.feast-mon { display: block; font-size: 11px; color: #aaa; text-transform: uppercase; font-weight: 600; }
+
+.feast-cels { flex: 1; }
+.cel-item { display: flex; align-items: center; gap: 8px; padding: 3px 0; font-size: 14px; color: #333; }
+.cel-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+.cel-title { flex: 1; }
+.cel-rank {
+  font-size: 11px;
+  color: #fff;
+  background: #8b0000;
+  padding: 1px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+  font-weight: 600;
+}
+.row-patronal .cel-rank { background: #b8860b; }
+
+/* Dots */
+.dot-white  { background: #bbb; }
 .dot-purple { background: #7b1fa2; }
 .dot-red    { background: #c0392b; }
-.dot-gold   { background: #d4a017; }
 .dot-green  { background: #388e3c; }
+.dot-rose   { background: #e91e8c; }
+.dot-gold   { background: #d4a017; }
+
 /* Legend */
-.liturgical-legend {
-  margin-top: 30px;
-  padding: 18px 20px;
-  background: #f9f9f9;
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
-}
-.liturgical-legend h4 {
-  margin: 0 0 12px;
-  font-size: 15px;
-  color: #555;
-  font-weight: 700;
-}
-.legend-items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-.legend-item {
-  font-size: 12px;
-  color: #555;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.cal-legend { display: flex; flex-wrap: wrap; gap: 14px; padding: 12px 0 6px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #666; }
+.ldot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+.cal-attribution { font-size: 11px; color: #bbb; margin: 2px 0 0; }
+.cal-attribution a { color: #8b0000; }
+
+@media (max-width: 480px) {
+  .cal-year-btn { padding: 6px 14px; font-size: 13px; }
+  .cal-month-btn { padding: 4px 9px; font-size: 12px; }
+  .feast-day { font-size: 18px; }
+  .cel-title { font-size: 13px; }
 }
 </style>
