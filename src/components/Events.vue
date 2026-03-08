@@ -132,7 +132,6 @@ const readingDate    = ref(ymd(new Date()))
 const rdLoading      = ref(false)
 const rdError        = ref(false)
 const rdReady        = ref(false)
-let   _rdScript      = null
 
 function rDateNum(d) { return d.replace(/-/g, '') }
 function shiftDay(d, n) {
@@ -151,32 +150,33 @@ function cycleInfo(dateStr) {
   }
 }
 
-function loadReadings(dateStr) {
-  if (_rdScript) { _rdScript.remove(); _rdScript = null }
+async function loadReadings(dateStr) {
   document.querySelectorAll('[id^="Universalis_"]').forEach(el => { el.innerHTML = '' })
   rdReady.value   = false
   rdError.value   = false
   rdLoading.value = true
 
-  window.universalisCallback = (data) => {
+  try {
+    const jsUrl = `https://universalis.com/es/${rDateNum(dateStr)}/jsonpmass.js`
+    const res   = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(jsUrl)}`)
+    if (!res.ok) throw new Error('http ' + res.status)
+    const text  = await res.text()
+    // JSONP formato: universalisCallback({...})
+    const m = text.match(/universalisCallback\s*\(([\s\S]*)\)\s*;?\s*$/)
+    if (!m) throw new Error('parse')
+    const data = JSON.parse(m[1])
     let n = 0
     Object.keys(data).forEach(key => {
       const el = document.getElementById('Universalis_' + key)
       if (el && data[key]) { el.innerHTML = data[key]; n++ }
     })
-    rdLoading.value = false
     if (n > 0) rdReady.value = true
-    else rdError.value = true
+    else throw new Error('empty')
+  } catch {
+    rdError.value = true
+  } finally {
+    rdLoading.value = false
   }
-
-  const s = document.createElement('script')
-  s.src = `https://universalis.com/es/${rDateNum(dateStr)}/jsonpmass.js`
-  s.onload = () => {
-    if (!rdReady.value) { rdLoading.value = false; rdError.value = true }
-  }
-  s.onerror = () => { rdLoading.value = false; rdError.value = true }
-  document.head.appendChild(s)
-  _rdScript = s
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
