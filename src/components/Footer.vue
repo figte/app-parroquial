@@ -6,26 +6,6 @@ const base = import.meta.env.BASE_URL
         <!-- footer widget start -->
       <div class="footer-widget">
         <div class="container">
-          <aside id="tag_cloud-4" class="widget widget_tag_cloud">
-            <div class="col-md-3">
-              <h2 class="widget-title">Temas</h2>
-              <div class="tagcloud">
-                <a href="#" class="tag-link-37" title="1 topic" style="font-size: 8pt">Fe</a>
-                <a href="#" class="tag-link-38" title="1 topic" style="font-size: 8pt">Eucaristía</a>
-                <a href="#" class="tag-link-32" title="1 topic" style="font-size: 8pt">Familia</a>
-                <a href="#" class="tag-link-36" title="1 topic" style="font-size: 8pt">Sacramentos</a>
-                <a href="#" class="tag-link-31" title="1 topic" style="font-size: 8pt">Misión</a>
-                <a href="#" class="tag-link-34" title="1 topic" style="font-size: 8pt">Evangelio</a>
-                <a href="#" class="tag-link-35" title="1 topic" style="font-size: 8pt">Catequesis</a>
-                <a href="#" class="tag-link-33" title="1 topic" style="font-size: 8pt">Juventud</a>
-                <a href="#" class="tag-link-33" title="1 topic" style="font-size: 8pt">Caridad</a>
-                <a href="#" class="tag-link-33" title="1 topic" style="font-size: 8pt">Oración</a>
-              </div>
-              <!-- end tagcloud -->
-            </div>
-            <!-- end col md 3 -->
-          </aside>
-
           <aside
             id="ccr_popular_posts-5"
             class="widget widget_ccr_popular_posts"
@@ -102,13 +82,6 @@ const base = import.meta.env.BASE_URL
         <div class="container">
           <div class="row">
             <div class="clearfix"></div>
-            <div class="logo text-center">
-              <a href="#"
-                ><img :src="base + 'assets/images/09/logo.png'" alt="Peace"
-              /></a>
-            </div>
-            <!-- /.logo -->
-
             <div class="copyright">
               <p>
                 Parroquia <strong>Nuestra Señora del Refugio</strong> &mdash; Copyright © 2026 | Todos los derechos reservados
