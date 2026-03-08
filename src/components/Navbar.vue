@@ -139,7 +139,7 @@
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 15px 10px;
+  padding: 15px 10px 15px 20px;
   line-height: 20px;
 }
 #top-section #peace-menu .navbar-brand:hover,
@@ -147,21 +147,9 @@
   color: #cccccc;
 }
 
-/* En desktop (≥768px) ocultar el brand para no duplicar con el logo del header */
-@media (min-width: 768px) {
-  #top-section #peace-menu .navbar-brand {
-    display: none;
-  }
-}
-
-/* Eliminar padding lateral del header en móvil para efecto edge-to-edge */
 @media (max-width: 767px) {
-  #top-section .container-fluid {
-    padding-left: 0;
-    padding-right: 0;
-  }
   #top-section #peace-menu .container {
-    padding-left: 0;
+    padding-left: 20px;
     padding-right: 0;
   }
 }
