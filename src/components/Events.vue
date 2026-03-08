@@ -127,11 +127,8 @@ function loadCalendar() {
   loading.value = false
 }
 
-// ── Lecturas del Día (Universalis JSONP) ─────────────────────────────────────
-const readingDate    = ref(ymd(new Date()))
-const rdLoading      = ref(false)
-const rdError        = ref(false)
-const rdReady        = ref(false)
+// ── Lecturas del Día ──────────────────────────────────────────────────────────
+const readingDate = ref(ymd(new Date()))
 
 function rDateNum(d) { return d.replace(/-/g, '') }
 function shiftDay(d, n) {
@@ -150,50 +147,25 @@ function cycleInfo(dateStr) {
   }
 }
 
-const CORS_PROXIES = [
-  url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-  url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
-  url => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`,
+const DAY_NAMES = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+const MONTH_NAMES_FULL = [
+  '', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+  'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
 ]
 
-async function fetchWithFallback(targetUrl) {
-  for (const proxyFn of CORS_PROXIES) {
-    try {
-      const res = await fetch(proxyFn(targetUrl), { signal: AbortSignal.timeout(8000) })
-      if (res.ok) {
-        const text = await res.text()
-        if (text && text.length > 50) return text
-      }
-    } catch { /* try next proxy */ }
-  }
-  throw new Error('all proxies failed')
+function readingDateLabel(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00Z')
+  return `${DAY_NAMES[d.getUTCDay()]} ${d.getUTCDate()} de ${MONTH_NAMES_FULL[d.getUTCMonth() + 1]} de ${d.getUTCFullYear()}`
 }
 
-async function loadReadings(dateStr) {
-  document.querySelectorAll('[id^="Universalis_"]').forEach(el => { el.innerHTML = '' })
-  rdReady.value   = false
-  rdError.value   = false
-  rdLoading.value = true
+function universalisUrl(dateStr) {
+  return `https://universalis.com/es/${rDateNum(dateStr)}/mass.htm`
+}
 
-  try {
-    const jsUrl = `https://universalis.com/es/${rDateNum(dateStr)}/jsonpmass.js`
-    const text  = await fetchWithFallback(jsUrl)
-    // JSONP formato: universalisCallback({...})
-    const m = text.match(/universalisCallback\s*\(([\s\S]*)\)\s*;?\s*$/)
-    if (!m) throw new Error('parse')
-    const data = JSON.parse(m[1])
-    let n = 0
-    Object.keys(data).forEach(key => {
-      const el = document.getElementById('Universalis_' + key)
-      if (el && data[key]) { el.innerHTML = data[key]; n++ }
-    })
-    if (n > 0) rdReady.value = true
-    else throw new Error('empty')
-  } catch {
-    rdError.value = true
-  } finally {
-    rdLoading.value = false
-  }
+function readingSeasonInfo(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00Z')
+  const season = getLiturgicalSeason(d, d.getUTCFullYear())
+  return seasonMeta(season)
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -258,9 +230,8 @@ function colClass(colour) {
   }[colour] || 'dot-white'
 }
 
-onMounted(() => { loadCalendar(); loadReadings(readingDate.value) })
+onMounted(() => { loadCalendar() })
 watch([selectedYear, selectedMonth], () => loadCalendar())
-watch(readingDate, d => loadReadings(d))
 </script>
 
 <template>
@@ -358,101 +329,82 @@ watch(readingDate, d => loadReadings(d))
         Lectura diaria de la Santa Misa según el Calendario Romano General.
       </div>
 
-      <!-- Navegación de fecha -->
-      <div class="rd-date-bar">
-        <button class="rd-nav-btn" @click="readingDate = shiftDay(readingDate, -1)">
-          <i class="fa fa-chevron-left"></i>
-        </button>
-        <input type="date" class="rd-date-input" v-model="readingDate" />
-        <button class="rd-nav-btn" @click="readingDate = shiftDay(readingDate, 1)">
-          <i class="fa fa-chevron-right"></i>
-        </button>
+      <!-- Tarjeta principal -->
+      <div class="rd-card" :style="{ borderColor: readingSeasonInfo(readingDate).bg }">
 
-        <span class="rd-cycle-badge">
-          <i class="fa fa-book"></i>
-          <template v-if="cycleInfo(readingDate).isSunday">
-            Ciclo {{ cycleInfo(readingDate).sunday }}
-          </template>
-          <template v-else>
-            Año {{ cycleInfo(readingDate).weekday }}
-          </template>
-        </span>
-      </div>
-
-      <!-- Estado: cargando -->
-      <div v-if="rdLoading" class="rd-state">
-        <i class="fa fa-spinner fa-spin fa-2x"></i>
-        <p>Cargando lecturas…</p>
-      </div>
-
-      <!-- Estado: error -->
-      <div v-else-if="rdError" class="rd-state rd-state--error">
-        <i class="fa fa-exclamation-circle fa-2x"></i>
-        <p>No se pudieron cargar las lecturas para este día.</p>
-        <a
-          :href="'https://universalis.com/es/' + rDateNum(readingDate) + '/mass.htm'"
-          target="_blank"
-          rel="noopener"
-          class="rd-external-btn"
-        >
-          <i class="fa fa-external-link"></i> Ver lecturas en Universalis
-        </a>
-      </div>
-
-      <!-- Contenido: lecturas (se rellena con JSONP de Universalis) -->
-      <div v-show="rdReady" class="rd-content">
-        <!-- Primera Lectura -->
-        <div class="rd-block">
-          <div class="rd-block-header rd-color-purple">
+        <!-- Encabezado con tiempo litúrgico -->
+        <div class="rd-card-header" :style="{ background: readingSeasonInfo(readingDate).bg }">
+          <i :class="'fa ' + readingSeasonInfo(readingDate).icon + ' rd-season-icon'"></i>
+          <span class="rd-season-label">{{ readingSeasonInfo(readingDate).label }}</span>
+          <span class="rd-cycle-pill">
             <i class="fa fa-book"></i>
-            <span>Primera Lectura</span>
-            <span class="rd-ref" id="Universalis_Mass_R1.ref"></span>
+            <template v-if="cycleInfo(readingDate).isSunday">
+              Ciclo {{ cycleInfo(readingDate).sunday }}
+            </template>
+            <template v-else>
+              Año {{ cycleInfo(readingDate).weekday }}
+            </template>
+          </span>
+        </div>
+
+        <!-- Cuerpo -->
+        <div class="rd-card-body">
+          <!-- Navegación de fecha -->
+          <div class="rd-date-bar">
+            <button class="rd-nav-btn" @click="readingDate = shiftDay(readingDate, -1)" title="Día anterior">
+              <i class="fa fa-chevron-left"></i>
+            </button>
+            <div class="rd-date-display">
+              <i class="fa fa-calendar rd-cal-icon"></i>
+              <span class="rd-date-text">{{ readingDateLabel(readingDate) }}</span>
+            </div>
+            <button class="rd-nav-btn" @click="readingDate = shiftDay(readingDate, 1)" title="Día siguiente">
+              <i class="fa fa-chevron-right"></i>
+            </button>
           </div>
-          <div class="rd-block-body" id="Universalis_Mass_R1.text"></div>
-        </div>
-
-        <!-- Salmo Responsorial -->
-        <div class="rd-block">
-          <div class="rd-block-header rd-color-green">
-            <i class="fa fa-music"></i>
-            <span>Salmo Responsorial</span>
-            <span class="rd-ref" id="Universalis_Mass_Ps.ref"></span>
+          <div class="rd-date-picker-row">
+            <label class="rd-picker-label">Elegir fecha:</label>
+            <input type="date" class="rd-date-input" v-model="readingDate" />
           </div>
-          <div class="rd-block-body rd-psalm" id="Universalis_Mass_Ps.text"></div>
-        </div>
 
-        <!-- Segunda Lectura (domingos) -->
-        <div class="rd-block rd-block--second">
-          <div class="rd-block-header rd-color-blue">
-            <i class="fa fa-book"></i>
-            <span>Segunda Lectura</span>
-            <span class="rd-ref" id="Universalis_Mass_R2.ref"></span>
+          <!-- Estructura de lecturas -->
+          <div class="rd-structure">
+            <div class="rd-structure-item rd-s-purple">
+              <i class="fa fa-book-open rd-s-icon"></i>
+              <span>Primera Lectura</span>
+            </div>
+            <div class="rd-structure-item rd-s-green">
+              <i class="fa fa-music rd-s-icon"></i>
+              <span>Salmo Responsorial</span>
+            </div>
+            <div v-if="cycleInfo(readingDate).isSunday" class="rd-structure-item rd-s-blue">
+              <i class="fa fa-book rd-s-icon"></i>
+              <span>Segunda Lectura</span>
+            </div>
+            <div class="rd-structure-item rd-s-gold">
+              <i class="fa fa-cross rd-s-icon"></i>
+              <span>Evangelio</span>
+            </div>
           </div>
-          <div class="rd-block-body" id="Universalis_Mass_R2.text"></div>
-        </div>
 
-        <!-- Aclamación al Evangelio -->
-        <div class="rd-block rd-block--acclamation">
-          <div class="rd-block-body rd-acclamation" id="Universalis_Mass_GA.text"></div>
-        </div>
+          <!-- Botón principal -->
+          <a
+            :href="universalisUrl(readingDate)"
+            target="_blank"
+            rel="noopener"
+            class="rd-main-btn"
+            :style="{ background: readingSeasonInfo(readingDate).bg }"
+          >
+            <i class="fa fa-external-link"></i>
+            Ver Lecturas Completas
+          </a>
 
-        <!-- Evangelio -->
-        <div class="rd-block rd-block--gospel">
-          <div class="rd-block-header rd-color-gold">
-            <i class="fa fa-cross"></i>
-            <span>Evangelio</span>
-            <span class="rd-ref" id="Universalis_Mass_Gr.ref"></span>
-          </div>
-          <div class="rd-block-body" id="Universalis_Mass_G.text"></div>
+          <p class="rd-attribution">
+            Las lecturas son proporcionadas por
+            <a href="https://universalis.com/es/" target="_blank" rel="noopener">Universalis</a>
+            &mdash; texto litúrgico en español.
+          </p>
         </div>
-
-        <!-- Copyright requerido por Universalis -->
-        <p class="rd-copyright">
-          <i class="fa fa-info-circle"></i>
-          Lecturas obtenidas de
-          <a href="https://universalis.com/es/mass.htm" target="_blank" rel="noopener">Universalis</a>
-          &mdash; Texto litúrgico conforme al Leccionario de la Conferencia Episcopal.
-        </p>
       </div>
     </div>
   </section>
@@ -583,113 +535,147 @@ watch(readingDate, d => loadReadings(d))
 }
 
 /* ── Lecturas del Día ───────────────────────────────────────────────────── */
-.readings-section { background: #fff; }
+.readings-section { background: #f4f4f8; }
 .readings-section .section-title { color: #8b0000; }
-.readings-section .section-detail { color: #666; margin-bottom: 24px; }
+.readings-section .section-detail { color: #666; margin-bottom: 28px; }
 
-/* Date bar */
+/* Tarjeta */
+.rd-card {
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 14px;
+  border: 3px solid #8b0000;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+  background: #fff;
+}
+
+/* Encabezado */
+.rd-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  color: #fff;
+}
+.rd-season-icon { font-size: 18px; }
+.rd-season-label { font-size: 15px; font-weight: 700; flex: 1; }
+.rd-cycle-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.25);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Cuerpo */
+.rd-card-body { padding: 24px 28px; }
+
+/* Barra de fecha */
 .rd-date-bar {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 24px;
+  margin-bottom: 10px;
 }
 .rd-nav-btn {
-  width: 36px; height: 36px;
+  width: 34px; height: 34px;
   border: 2px solid #8b0000;
   background: #fff;
   color: #8b0000;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   transition: all 0.15s;
   display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
 }
 .rd-nav-btn:hover { background: #8b0000; color: #fff; }
-.rd-date-input {
-  padding: 6px 12px;
-  border: 2px solid #ddd;
+.rd-date-display {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f9f9fb;
   border-radius: 8px;
-  font-size: 14px;
+  padding: 8px 14px;
+  border: 1px solid #e8e8ee;
+}
+.rd-cal-icon { color: #8b0000; }
+.rd-date-text { font-size: 14px; font-weight: 600; color: #333; }
+
+.rd-date-picker-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding-left: 4px;
+}
+.rd-picker-label { font-size: 13px; color: #888; }
+.rd-date-input {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 13px;
   color: #444;
   cursor: pointer;
 }
 .rd-date-input:focus { outline: none; border-color: #8b0000; }
-.rd-cycle-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #8b0000;
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
-  padding: 5px 14px;
-  border-radius: 16px;
-}
 
-/* States */
-.rd-state { text-align: center; padding: 40px 0; color: #999; }
-.rd-state p { margin: 12px 0 10px; font-size: 15px; }
-.rd-state--error { color: #c0392b; }
-.rd-external-btn {
-  display: inline-block;
-  padding: 8px 20px;
-  background: #8b0000;
-  color: #fff;
-  border-radius: 6px;
+/* Estructura */
+.rd-structure {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.rd-structure-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border-radius: 8px;
   font-size: 14px;
-  text-decoration: none;
-  transition: background 0.15s;
+  font-weight: 600;
+  color: #fff;
 }
-.rd-external-btn:hover { background: #a00; }
+.rd-s-icon { font-size: 15px; width: 18px; text-align: center; }
+.rd-s-purple { background: #7b1fa2; }
+.rd-s-green  { background: #2e7d32; }
+.rd-s-blue   { background: #1565c0; }
+.rd-s-gold   { background: #b8860b; }
 
-/* Reading blocks */
-.rd-content { display: flex; flex-direction: column; gap: 20px; }
-.rd-block {
-  border: 1px solid #eee;
+/* Botón principal */
+.rd-main-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
   border-radius: 10px;
-  overflow: hidden;
-  background: #fafafa;
-}
-.rd-block-header {
-  display: flex; align-items: center; gap: 10px;
-  padding: 10px 16px;
-  color: #fff;
+  font-size: 16px;
   font-weight: 700;
-  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+  margin-bottom: 14px;
 }
-.rd-color-purple { background: #7b1fa2; }
-.rd-color-green  { background: #2e7d32; }
-.rd-color-blue   { background: #1565c0; }
-.rd-color-gold   { background: #b8860b; }
-.rd-ref {
-  margin-left: auto;
-  font-size: 12px;
-  font-weight: 400;
-  opacity: 0.9;
-}
-.rd-block-body {
-  padding: 14px 18px;
-  font-size: 14px;
-  line-height: 1.75;
-  color: #333;
-}
-.rd-psalm { font-style: italic; background: #f0f8f0; }
-.rd-acclamation { text-align: center; color: #7b1fa2; font-weight: 600; font-style: italic; padding: 10px; }
-.rd-block--second:not(:has(#Universalis_Mass_R2\.text:not(:empty))) { display: none; }
-.rd-block--acclamation:not(:has(#Universalis_Mass_GA\.text:not(:empty))) { display: none; }
-.rd-block--gospel { border-color: #d4a017; }
-.rd-block--gospel .rd-block-body { background: #fffbe6; }
+.rd-main-btn:hover { opacity: 0.88; color: #fff; transform: translateY(-2px); }
 
-.rd-copyright {
+.rd-attribution {
   font-size: 12px;
   color: #aaa;
-  margin: 4px 0 0;
   text-align: center;
+  margin: 0;
 }
-.rd-copyright a { color: #8b0000; }
+.rd-attribution a { color: #8b0000; }
 
 @media (max-width: 480px) {
-  .rd-date-bar { gap: 8px; }
-  .rd-block-body { font-size: 13px; padding: 12px 14px; }
+  .rd-card-body { padding: 18px 16px; }
+  .rd-date-text { font-size: 13px; }
+  .rd-structure-item { font-size: 13px; }
 }
 </style>
