@@ -79,7 +79,7 @@ function buildMonthData(year, month) {
     [`${Y}-03-25`, 'Anunciación del Señor',                       'white',  'solemnity',       1.0],
     [`${Y}-06-24`, 'Natividad de San Juan Bautista',              'white',  'solemnity',       1.0],
     [`${Y}-06-29`, 'Santos Pedro y Pablo, Apóstoles',             'red',    'solemnity',       1.0],
-    [`${Y}-08-13`, '★ FIESTA PATRONAL — Ntra. Sra. de El Refugio','gold',   'patronal',        1.0],
+    [`${Y}-07-04`, '★ FIESTA PATRONAL — Ntra. Sra. de El Refugio','gold',   'patronal',        1.0],
     [`${Y}-08-15`, 'Asunción de la Virgen María',                 'white',  'solemnity',       1.0],
     [`${Y}-09-15`, 'Nuestra Señora de los Dolores',               'white',  'memorial',        4.0],
     [`${Y}-10-07`, 'Nuestra Señora del Rosario',                  'white',  'memorial',        4.0],
@@ -274,7 +274,7 @@ watch([selectedYear, selectedMonth], () => loadCalendar())
       </div>
       <p class="cal-attribution">
         <i class="fa fa-info-circle"></i>
-        Calendario Romano General · La fiesta patronal (13 Ago) se muestra siempre.
+        Calendario Romano General · La fiesta patronal (4 Jul) se muestra siempre.
       </p>
     </div>
   </section>
