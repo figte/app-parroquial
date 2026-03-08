@@ -1,6 +1,106 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 
+// ── Algoritmo de cálculo de Pascua (método Butcher/Gregoriano) ──────────────
+function getEaster(y) {
+  const a = y % 19, b = Math.floor(y / 100), c = y % 100
+  const d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25)
+  const g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30
+  const i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7
+  const m = Math.floor((a + 11 * h + 22 * l) / 451)
+  const mo = Math.floor((h + l - 7 * m + 114) / 31)
+  const dy = ((h + l - 7 * m + 114) % 31) + 1
+  return new Date(Date.UTC(y, mo - 1, dy))
+}
+function dd(base, n) { return new Date(base.getTime() + n * 86400000) }
+function ymd(dt) { return dt.toISOString().slice(0, 10) }
+
+function adventStart(y) {
+  const xmas = new Date(Date.UTC(y, 11, 25))
+  const dow = xmas.getUTCDay()
+  return dd(xmas, -(21 + (dow === 0 ? 0 : dow)))
+}
+function baptismOfLord(y) {
+  const ep = new Date(Date.UTC(y, 0, 6))
+  const dow = ep.getUTCDay()
+  return dd(ep, dow === 0 ? 7 : 7 - dow)
+}
+
+function getLiturgicalSeason(date, y) {
+  const e = getEaster(y)
+  const ash = dd(e, -46), pent = dd(e, 49)
+  const adv = adventStart(y)
+  const bapt = baptismOfLord(y)
+  const xmas = new Date(Date.UTC(y, 11, 25))
+  const t = date.getTime()
+  // Navidad de año anterior que se extiende a enero
+  const prevXmas = new Date(Date.UTC(y - 1, 11, 25))
+  if (t >= prevXmas.getTime() && t < new Date(Date.UTC(y, 0, 1)).getTime()) return 'christmas'
+  if (t < bapt.getTime()) return 'christmas'
+  if (t < ash.getTime()) return 'ordinary'
+  if (t < e.getTime()) return 'lent'
+  if (t < pent.getTime()) return 'easter'
+  if (t < adv.getTime()) return 'ordinary'
+  if (t < xmas.getTime()) return 'advent'
+  return 'christmas'
+}
+
+function buildMonthData(year, month) {
+  const e = getEaster(year)
+  const cels = {}
+  function cel(dateStr, title, colour, rank, rank_num) {
+    if (!cels[dateStr]) cels[dateStr] = []
+    cels[dateStr].push({ title, colour, rank, rank_num })
+  }
+  // Fiestas móviles basadas en Pascua
+  cel(ymd(dd(e, -46)), 'Miércoles de Ceniza',                     'purple', 'solemnity',       1.5)
+  cel(ymd(dd(e,  -7)), 'Domingo de Ramos',                        'red',    'solemnity',       1.5)
+  cel(ymd(dd(e,  -3)), 'Jueves Santo',                            'white',  'solemnity',       1.5)
+  cel(ymd(dd(e,  -2)), 'Viernes Santo',                           'red',    'solemnity',       1.5)
+  cel(ymd(dd(e,  -1)), 'Sábado Santo',                            'white',  'solemnity',       1.5)
+  cel(ymd(e),          'Domingo de Pascua de Resurrección',       'white',  'solemnity',       1.0)
+  cel(ymd(dd(e,  39)), 'Ascensión del Señor',                     'white',  'solemnity',       1.0)
+  cel(ymd(dd(e,  49)), 'Pentecostés',                             'red',    'solemnity',       1.0)
+  cel(ymd(dd(e,  56)), 'Santísima Trinidad',                      'white',  'solemnity',       1.0)
+  cel(ymd(dd(e,  60)), 'Santísimo Cuerpo y Sangre de Cristo',     'white',  'solemnity',       1.0)
+  cel(ymd(dd(e,  68)), 'Sagrado Corazón de Jesús',                'white',  'solemnity',       1.0)
+  // Domingos de Adviento
+  const adv = adventStart(year)
+  for (let i = 0; i < 4; i++)
+    cel(ymd(dd(adv, i * 7)), `${i + 1}° Domingo de Adviento`,    'purple', 'sunday_of_advent', 2.0)
+  // Fiestas fijas
+  const Y = year
+  ;[
+    [`${Y}-01-01`, 'Solemnidad de Santa María Madre de Dios',     'white',  'solemnity',       1.0],
+    [`${Y}-01-06`, 'Epifanía del Señor',                          'white',  'solemnity',       1.0],
+    [ymd(baptismOfLord(Y)), 'Bautismo del Señor',                 'white',  'feast_of_the_lord', 2.0],
+    [`${Y}-02-02`, 'Presentación del Señor',                      'white',  'feast_of_the_lord', 2.0],
+    [`${Y}-03-19`, 'San José, esposo de la Virgen María',         'white',  'solemnity',       1.0],
+    [`${Y}-03-25`, 'Anunciación del Señor',                       'white',  'solemnity',       1.0],
+    [`${Y}-06-24`, 'Natividad de San Juan Bautista',              'white',  'solemnity',       1.0],
+    [`${Y}-06-29`, 'Santos Pedro y Pablo, Apóstoles',             'red',    'solemnity',       1.0],
+    [`${Y}-07-04`, '★ FIESTA PATRONAL — Ntra. Sra. de El Refugio','gold',   'patronal',        1.0],
+    [`${Y}-08-15`, 'Asunción de la Virgen María',                 'white',  'solemnity',       1.0],
+    [`${Y}-09-15`, 'Nuestra Señora de los Dolores',               'white',  'memorial',        4.0],
+    [`${Y}-10-07`, 'Nuestra Señora del Rosario',                  'white',  'memorial',        4.0],
+    [`${Y}-11-01`, 'Todos los Santos',                            'white',  'solemnity',       1.0],
+    [`${Y}-11-02`, 'Conmemoración de los Fieles Difuntos',        'purple', 'feast',           3.0],
+    [`${Y}-12-08`, 'Inmaculada Concepción de la Virgen María',    'white',  'solemnity',       1.0],
+    [`${Y}-12-12`, 'Nuestra Señora de Guadalupe',                 'white',  'feast',           3.0],
+    [`${Y}-12-25`, 'Natividad del Señor (Navidad)',               'white',  'solemnity',       1.0],
+    [`${Y}-12-26`, 'San Esteban, Protomártir',                    'red',    'feast',           3.0],
+    [`${Y}-12-28`, 'Santos Inocentes, Mártires',                  'red',    'feast',           3.0],
+  ].forEach(([dt, ...args]) => cel(dt, ...args))
+
+  const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate()
+  return Array.from({ length: daysInMonth }, (_, i) => {
+    const date = new Date(Date.UTC(year, month - 1, i + 1))
+    const dateStr = ymd(date)
+    return { date: dateStr, season: getLiturgicalSeason(date, year), celebrations: cels[dateStr] || [] }
+  })
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 const now = new Date()
 const currentYear = now.getFullYear()
 const years = [currentYear - 1, currentYear, currentYear + 1, currentYear + 2]
@@ -20,30 +120,10 @@ const loading = ref(false)
 const apiError = ref(false)
 const apiDays = ref([])
 
-async function loadCalendar() {
+function loadCalendar() {
   loading.value = true
   apiError.value = false
-  apiDays.value = []
-
-  const directUrl = `https://calapi.inadiutorium.cz/api/v0/en/calendars/general-la/${selectedYear.value}/${selectedMonth.value}`
-  const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(directUrl)}`
-
-  for (const url of [directUrl, proxyUrl]) {
-    try {
-      const res = await fetch(url, { signal: AbortSignal.timeout(8000) })
-      if (!res.ok) continue
-      const data = await res.json()
-      if (Array.isArray(data)) {
-        apiDays.value = data
-        loading.value = false
-        return
-      }
-    } catch {
-      // intentar siguiente URL
-    }
-  }
-
-  apiError.value = true
+  apiDays.value = buildMonthData(selectedYear.value, selectedMonth.value)
   loading.value = false
 }
 
@@ -56,18 +136,9 @@ const seasonOfMonth = computed(() => {
 
 const feasts = computed(() => {
   const result = []
-  if (apiError.value || !apiDays.value.length) return result
+  if (!apiDays.value.length) return result
   apiDays.value.forEach(day => {
-    const mmdd = day.date.slice(5)
     const filtered = day.celebrations.filter(c => c.rank_num <= 3.0)
-    if (mmdd === '08-13') {
-      filtered.unshift({
-        title: '★ FIESTA PATRONAL — Nuestra Señora de El Refugio',
-        colour: 'gold',
-        rank: 'patronal',
-        rank_num: 1.0
-      })
-    }
     if (filtered.length) {
       result.push({
         date: day.date,
@@ -166,15 +237,6 @@ watch([selectedYear, selectedMonth], () => loadCalendar())
         <p>Cargando calendario litúrgico…</p>
       </div>
 
-      <!-- Error de API -->
-      <div v-else-if="apiError" class="cal-state cal-error-state">
-        <i class="fa fa-exclamation-circle fa-2x"></i>
-        <p>No se pudo cargar el calendario. Verifique su conexión.</p>
-        <button class="cal-retry-btn" @click="loadCalendar">
-          <i class="fa fa-refresh"></i> Reintentar
-        </button>
-      </div>
-
       <!-- Sin celebraciones destacadas -->
       <div v-else-if="!loading && feasts.length === 0" class="cal-state">
         <i class="fa fa-calendar-o fa-2x"></i>
@@ -212,9 +274,7 @@ watch([selectedYear, selectedMonth], () => loadCalendar())
       </div>
       <p class="cal-attribution">
         <i class="fa fa-info-circle"></i>
-        Calendario Romano General vía
-        <a href="https://calapi.inadiutorium.cz" target="_blank" rel="noopener">calapi.inadiutorium.cz</a>
-        · La fiesta patronal (13 Ago) se muestra siempre.
+        Calendario Romano General · La fiesta patronal (4 Jul) se muestra siempre.
       </p>
     </div>
   </section>
