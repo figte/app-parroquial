@@ -132,7 +132,6 @@ const readingDate = ref(ymd(new Date()))
 const rdLoading   = ref(false)
 const rdError     = ref(false)
 const rdReady     = ref(false)
-const rdData      = ref({})
 
 function rDateNum(d) { return d.replace(/-/g, '') }
 function shiftDay(d, n) {
@@ -173,14 +172,21 @@ function readingSeasonInfo(dateStr) {
 }
 
 function loadReadings(dateStr) {
-  // Quitar script anterior
+  // Limpiar script y callback anteriores
   const prev = document.getElementById('universalis-jsonp-script')
   if (prev) prev.remove()
   delete window.universalisCallback
 
-  rdData.value  = {}
-  rdReady.value  = false
-  rdError.value  = false
+  // Limpiar contenido de los elementos de lectura
+  ;['Mass_R1.ref','Mass_R1.text','Mass_Ps.ref','Mass_Ps.text',
+    'Mass_R2.ref','Mass_R2.text','Mass_GA.text','Mass_G.text','Mass_Gr.ref'
+  ].forEach(k => {
+    const el = document.getElementById('Universalis_' + k)
+    if (el) el.innerHTML = ''
+  })
+
+  rdReady.value   = false
+  rdError.value   = false
   rdLoading.value = true
 
   let timer = setTimeout(() => {
@@ -190,9 +196,15 @@ function loadReadings(dateStr) {
 
   window.universalisCallback = (data) => {
     clearTimeout(timer)
-    rdData.value   = data || {}
-    rdReady.value  = Object.keys(rdData.value).length > 0
-    rdError.value  = !rdReady.value
+    let filled = 0
+    if (data) {
+      Object.keys(data).forEach(key => {
+        const el = document.getElementById('Universalis_' + key)
+        if (el && data[key]) { el.innerHTML = data[key]; filled++ }
+      })
+    }
+    rdReady.value   = filled > 0
+    rdError.value   = filled === 0
     rdLoading.value = false
     delete window.universalisCallback
   }
@@ -412,52 +424,52 @@ watch(readingDate, d => loadReadings(d))
         </a>
       </div>
 
-      <!-- Lecturas -->
-      <div v-else-if="rdReady" class="rd-content">
+      <!-- Lecturas (los IDs son llenados por el JSONP de Universalis) -->
+      <div v-show="rdReady" class="rd-content">
 
         <!-- Primera Lectura -->
-        <div v-if="rdData['Mass_R1.text']" class="rd-block">
+        <div class="rd-block rd-block--r1">
           <div class="rd-block-header rd-color-purple">
             <i class="fa fa-book"></i>
             <span>Primera Lectura</span>
-            <span class="rd-ref" v-html="rdData['Mass_R1.ref']"></span>
+            <span class="rd-ref" id="Universalis_Mass_R1.ref"></span>
           </div>
-          <div class="rd-block-body" v-html="rdData['Mass_R1.text']"></div>
+          <div class="rd-block-body" id="Universalis_Mass_R1.text"></div>
         </div>
 
         <!-- Salmo Responsorial -->
-        <div v-if="rdData['Mass_Ps.text']" class="rd-block">
+        <div class="rd-block rd-block--ps">
           <div class="rd-block-header rd-color-green">
             <i class="fa fa-music"></i>
             <span>Salmo Responsorial</span>
-            <span class="rd-ref" v-html="rdData['Mass_Ps.ref']"></span>
+            <span class="rd-ref" id="Universalis_Mass_Ps.ref"></span>
           </div>
-          <div class="rd-block-body rd-psalm" v-html="rdData['Mass_Ps.text']"></div>
+          <div class="rd-block-body rd-psalm" id="Universalis_Mass_Ps.text"></div>
         </div>
 
-        <!-- Segunda Lectura (domingos) -->
-        <div v-if="rdData['Mass_R2.text']" class="rd-block">
+        <!-- Segunda Lectura (domingos, oculto si está vacío) -->
+        <div class="rd-block rd-block--r2">
           <div class="rd-block-header rd-color-blue">
             <i class="fa fa-book"></i>
             <span>Segunda Lectura</span>
-            <span class="rd-ref" v-html="rdData['Mass_R2.ref']"></span>
+            <span class="rd-ref" id="Universalis_Mass_R2.ref"></span>
           </div>
-          <div class="rd-block-body" v-html="rdData['Mass_R2.text']"></div>
+          <div class="rd-block-body" id="Universalis_Mass_R2.text"></div>
         </div>
 
         <!-- Aclamación al Evangelio -->
-        <div v-if="rdData['Mass_GA.text']" class="rd-block">
-          <div class="rd-block-body rd-acclamation" v-html="rdData['Mass_GA.text']"></div>
+        <div class="rd-block rd-block--ga">
+          <div class="rd-block-body rd-acclamation" id="Universalis_Mass_GA.text"></div>
         </div>
 
         <!-- Evangelio -->
-        <div v-if="rdData['Mass_G.text']" class="rd-block rd-block--gospel">
+        <div class="rd-block rd-block--gospel">
           <div class="rd-block-header rd-color-gold">
             <i class="fa fa-cross"></i>
             <span>Evangelio</span>
-            <span class="rd-ref" v-html="rdData['Mass_Gr.ref']"></span>
+            <span class="rd-ref" id="Universalis_Mass_Gr.ref"></span>
           </div>
-          <div class="rd-block-body" v-html="rdData['Mass_G.text']"></div>
+          <div class="rd-block-body" id="Universalis_Mass_G.text"></div>
         </div>
 
         <p class="rd-copyright">
@@ -697,6 +709,9 @@ watch(readingDate, d => loadReadings(d))
 .rd-acclamation { text-align: center; color: #7b1fa2; font-weight: 600; font-style: italic; padding: 10px; }
 .rd-block--gospel { border-color: #d4a017; }
 .rd-block--gospel .rd-block-body { background: #fffbe6; }
+/* Ocultar bloques cuyo cuerpo de texto esté vacío */
+.rd-block--r2:has(.rd-block-body:empty) { display: none; }
+.rd-block--ga:has(.rd-block-body:empty) { display: none; }
 
 .rd-copyright { font-size: 12px; color: #aaa; margin: 4px 0 0; text-align: center; }
 .rd-copyright a { color: #8b0000; }
