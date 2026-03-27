@@ -4,7 +4,7 @@
         <div class="container">
           <h2 class="section-title text-center">Nuestra Ubicación y Servicios</h2>
           <div class="section-detail text-center">
-            Nos encontramos en el corazón de Ahuachapán, El Salvador. Nuestra parroquia ofrece
+            Nos encontramos en el corazón de nuestra ciudad. Nuestra parroquia ofrece
             los siguientes servicios sacramentales y pastorales a toda la comunidad.
           </div>
 
@@ -12,19 +12,13 @@
           <div class="row church-photo-row">
             <div class="col-md-8 col-md-offset-2">
               <div class="church-photo-wrap">
-                <img
-                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Parroquia_Nuestra_Se%C3%B1ora_de_la_Asunci%C3%B3n%2C_Ahuachap%C3%A1n.JPG"
-                  alt="Iglesia de Ahuachapán, El Salvador"
-                  class="church-photo"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                />
-                <div class="church-photo-placeholder" style="display:none;">
+                <div class="church-photo-placeholder" style="display:flex;">
                   <i class="fa fa-building" style="font-size:60px; color:#8b0000;"></i>
-                  <p>Parroquia Nuestra Señora de El Refugio<br/>Ahuachapán, El Salvador</p>
+                  <p>Parroquia [Nombre de su Parroquia]<br/>[Ciudad, País]</p>
                 </div>
                 <div class="church-photo-caption">
-                  Parroquia Nuestra Señora de El Refugio — Ahuachapán, El Salvador
-                  <small>(Foto: iglesia de Ahuachapán · Wikimedia Commons)</small>
+                  Parroquia [Nombre de su Parroquia] — [Ciudad, País]
+                  <small>(Reemplace esta sección con la foto de su iglesia)</small>
                 </div>
               </div>
             </div>
@@ -35,28 +29,24 @@
             <div class="col-md-6">
               <h3 class="map-title"><i class="fa fa-map-marker"></i> Cómo Llegarnos</h3>
               <div class="map-wrap">
-                <iframe
-                  src="https://maps.google.com/maps?q=X7FV%2BXX5+El+Refugio+Ahuachap%C3%A1n+El+Salvador&z=17&output=embed"
-                  title="Parroquia Nuestra Señora de El Refugio — Ahuachapán"
-                  style="width:100%; height:320px; border:none; border-radius:10px;"
-                  loading="lazy"
-                  allowfullscreen
-                ></iframe>
+                <div class="map-placeholder">
+                  <i class="fa fa-map-marker fa-3x"></i>
+                  <p>Inserte aquí el mapa de Google Maps de su parroquia</p>
+                  <small>Vaya a Google Maps → Compartir → Insertar mapa → copie el &lt;iframe&gt;</small>
+                </div>
                 <a
-                  href="https://maps.app.goo.gl/qVTuw9hccRKqjQDi9"
-                  target="_blank"
-                  rel="noopener"
+                  href="#"
                   class="gmaps-link"
                 >
                   <i class="fa fa-map-marker"></i> Ver en Google Maps
                 </a>
                 <p class="map-address">
                   <i class="fa fa-map-marker"></i>
-                  <strong>Parroquia Nuestra Señora de El Refugio</strong><br/>
-                  X7FV+XX5, El Refugio · Ahuachapán, El Salvador<br/>
-                  Diócesis de Santa Ana<br/>
-                  <i class="fa fa-phone"></i> +503 2413-0000 &nbsp;|&nbsp;
-                  <i class="fa fa-envelope-o"></i> parroquia@refugioahuachapan.org
+                  <strong>Parroquia [Nombre de su Parroquia]</strong><br/>
+                  [Dirección completa]<br/>
+                  [Diócesis]<br/>
+                  <i class="fa fa-phone"></i> +00 0000-0000 &nbsp;|&nbsp;
+                  <i class="fa fa-envelope-o"></i> parroquia@ejemplo.org
                 </p>
                 <p class="map-hours">
                   <i class="fa fa-clock-o"></i>
@@ -180,6 +170,24 @@
   text-align: center;
 }
 .church-photo-caption small { display: block; font-size: 11px; opacity: 0.8; }
+
+/* Map placeholder */
+.map-placeholder {
+  width: 100%;
+  height: 320px;
+  background: #f0ece8;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #8b0000;
+  text-align: center;
+  gap: 10px;
+  border: 2px dashed #c9a0a0;
+}
+.map-placeholder p { margin: 0; font-size: 14px; font-weight: 600; color: #555; }
+.map-placeholder small { font-size: 11px; color: #999; max-width: 260px; }
 
 /* Map section */
 .map-services-row { margin-top: 10px; }

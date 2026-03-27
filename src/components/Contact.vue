@@ -3,193 +3,299 @@ const base = import.meta.env.BASE_URL
 </script>
 
 <template>
-       <!-- contact us section start  -->
-      <section class="contact-us-section" id="contact">
-        <div class="container">
-          <div class="content-section">
-            <div class="content-wrapper">
-              <h2 class="section-title">Envíenos un Mensaje</h2>
+  <section class="contact-section section-padding" id="contact">
+    <div class="contact-container">
 
-              <div class="section-detail">
-                Estamos disponibles para escucharle. No dude en contactarnos para consultas pastorales, solicitud de sacramentos o cualquier inquietud espiritual.
-              </div>
+      <!-- Left: Info -->
+      <div class="contact-info-panel">
+        <div class="contact-cross">✝</div>
+        <h2 class="contact-heading">Estamos Aquí<br/>para Usted</h2>
+        <p class="contact-subtext">
+          No dude en contactarnos para consultas pastorales, solicitud de sacramentos
+          o cualquier inquietud espiritual. Con gusto le atenderemos.
+        </p>
 
-              <div role="form" class="wpcf7" id="wpcf7-f7-p367-o1" lang="en-US" dir="ltr">
-                <div class="screen-reader-response"></div>
-                <form action="/peace/#wpcf7-f7-p367-o1" method="post" class="wpcf7-form">
-                  <div style="display: none">
-                    <input type="hidden" name="_wpcf7" value="7" />
-                    <input type="hidden" name="_wpcf7_version" value="4.2.2" />
-                    <input type="hidden" name="_wpcf7_locale" value="en_US" />
-                    <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f7-p367-o1" />
-                    <input type="hidden" name="_wpnonce" value="bfbea92b91" />
-                  </div>
-                  <!-- end form group -->
-
-                  <div class="col-md-6 form-group">
-                    <label class="sr-only">Full Name</label>
-                    <span class="wpcf7-form-control-wrap your-name">
-                      <input
-                        type="text"
-                        name="your-name"
-                        value
-                        size="40"
-                        class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control"
-                        aria-required="true"
-                        aria-invalid="false"
-                        placeholder="Nombre completo"
-                      />
-                    </span>
-                  </div>
-                  <!-- end form group -->
-
-                  <div class="col-md-6 form-group">
-                    <label class="sr-only">Email Address</label>
-                    <span class="wpcf7-form-control-wrap your-email">
-                      <input
-                        type="email"
-                        name="your-email"
-                        value
-                        size="40"
-                        class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email form-control"
-                        aria-required="true"
-                        aria-invalid="false"
-                        placeholder="Correo electrónico"
-                      />
-                    </span>
-                  </div>
-                  <!-- end form group -->
-
-                  <div class="form-group col-md-12">
-                    <label class="sr-only">Subject</label>
-                    <span class="wpcf7-form-control-wrap your-subject">
-                      <input
-                        type="text"
-                        name="your-subject"
-                        value
-                        size="40"
-                        class="wpcf7-form-control wpcf7-text form-control"
-                        aria-invalid="false"
-                        placeholder="Asunto"
-                      />
-                    </span>
-                  </div>
-                  <!-- end form group -->
-
-                  <div class="form-group col-md-12">
-                    <span class="wpcf7-form-control-wrap your-message">
-                      <textarea
-                        name="your-message"
-                        cols="40"
-                        rows="5"
-                        class="wpcf7-form-control wpcf7-textarea form-control input-md"
-                        aria-invalid="false"
-                        placeholder="Su mensaje..."
-                      ></textarea>
-                    </span>
-                  </div>
-                  <!-- end form group -->
-
-                  <p class="event-btn-container col-md-12">
-                    <input
-                      type="submit"
-                      value="ENVIAR MENSAJE"
-                      class="wpcf7-form-control wpcf7-submit btn custom-btn"
-                    />
-                  </p>
-                  <div class="wpcf7-response-output wpcf7-display-none"></div>
-                </form>
-              </div>
-              <!-- end wpcf7 -->
+        <div class="contact-details">
+          <div class="contact-detail-item">
+            <div class="cd-icon"><i class="fa fa-map-marker"></i></div>
+            <div>
+              <strong>[Dirección de la Parroquia]</strong>
+              <span>[Ciudad, País]</span>
             </div>
-            <!-- end content wrapper -->
           </div>
-          <!-- end content section -->
-        </div>
-        <!-- end container -->
-      </section>
-      <!-- end contact us -->
-
-        <!-- full width start -->
-      <section class="full-width">
-        <div class="row-fluid">
-          <div class="content-section">
-            <div class="content-wrapper">
-              <div class="map-container">
-                <div class="googleMaps google-map-container"></div>
-                <div class="contact-info col-md-6 pull-right">
-                  <div class="contact-person">
-                    <h2>Contacto Pastoral</h2>
-                    <img
-                      width="150"
-                      height="150"
-                      :src="base + 'assets/images/09/personimg02.jpg'"
-                      class="img-circle"
-                      alt="team-3"
-                    />
-                    <div class="info">
-                      <h3>Padre Juan Pablo Rodríguez</h3>
-                      <p>Párroco</p>
-                      <span>
-                        <b>TEL:</b> +57 300 000 0000
-                      </span>
-                      <br />
-                      <span>
-                        <b>Email:</b> parroquia@diocesis.org
-                      </span>
-                    </div>
-                    <!-- /.info -->
-                  </div>
-                  <!-- /.contact-person -->
-                  <div class="contact-information">
-                    <h2>Información de Contacto</h2>
-                    <div class="address">
-                      <div class="media">
-                        <div class="media-left">
-                          <i class="fa fa-map-marker base-color"></i>
-                        </div>
-                        <div class="media-body">
-                          Carrera 5 # 10-20, Barrio Centro
-                          <br />Ciudad, Colombia.
-                          <br />
-                        </div>
-                        <!-- end media body -->
-                      </div>
-                      <div class="media">
-                        <div class="media-left">
-                          <i class="fa fa-clock-o base-color"></i>
-                        </div>
-                        <div class="media-body">
-                          <strong>Lunes a Viernes :</strong> 07:00 am - 07:00 pm
-                          <br />
-                          <strong>Sábado :</strong> 07:00 am - 06:00 pm
-                          <br />
-                          <strong>Domingo :</strong> 06:00 am - 01:00 pm
-                          <br />
-                          <strong>Misas :</strong> 7am, 10am, 12pm, 6pm (Dom)
-                        </div>
-                        <!-- end media body -->
-                      </div>
-                      <!-- end media -->
-                    </div>
-                    <!-- /.info -->
-                  </div>
-                  <!-- /.contact-person -->
-                </div>
-              </div>
-              <!-- Google Map Section End -->
+          <div class="contact-detail-item">
+            <div class="cd-icon"><i class="fa fa-phone"></i></div>
+            <div>
+              <strong>+00 0000-0000</strong>
+              <span>Oficina Parroquial</span>
             </div>
-            <!-- end content wrapper -->
           </div>
-          <!-- end content section -->
+          <div class="contact-detail-item">
+            <div class="cd-icon"><i class="fa fa-envelope-o"></i></div>
+            <div>
+              <strong>parroquia@ejemplo.org</strong>
+              <span>Correo electrónico</span>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="cd-icon"><i class="fa fa-clock-o"></i></div>
+            <div>
+              <strong>Lun–Vie: 8am–12pm · 2pm–5pm</strong>
+              <span>Sáb: 8am–12pm</span>
+            </div>
+          </div>
         </div>
-        <!-- end row fluid -->
-      </section>
-      <!-- end fullwidth -->
+
+        <!-- Priest info -->
+        <div class="contact-priest">
+          <div class="priest-avatar">
+            <i class="fa fa-user-circle-o"></i>
+          </div>
+          <div>
+            <strong>[Nombre del Párroco]</strong>
+            <span>Párroco</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="contact-form-panel">
+        <h3 class="form-heading">Envíenos un Mensaje</h3>
+        <form class="contact-form" @submit.prevent>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre completo</label>
+              <input type="text" placeholder="Su nombre" />
+            </div>
+            <div class="form-group">
+              <label>Correo electrónico</label>
+              <input type="email" placeholder="su@correo.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Asunto</label>
+            <input type="text" placeholder="¿En qué podemos ayudarle?" />
+          </div>
+          <div class="form-group">
+            <label>Mensaje</label>
+            <textarea rows="5" placeholder="Escriba su mensaje aquí…"></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            <i class="fa fa-paper-plane-o"></i> Enviar Mensaje
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
 </template>
 
+<style scoped>
+.contact-section {
+  background: linear-gradient(135deg, #f8f4f0 0%, #fff 100%);
+}
 
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 56px;
+  align-items: start;
+}
 
-<style>
+/* ── Info Panel ─────────────────────────────────────── */
+.contact-info-panel {
+  background: linear-gradient(145deg, #4a1020, #6b1a2a);
+  border-radius: 20px;
+  padding: 44px 36px;
+  color: rgba(255,255,255,.85);
+  position: sticky;
+  top: 80px;
+}
 
+.contact-cross {
+  font-size: 2.5rem;
+  color: #c9a84c;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.contact-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+
+.contact-subtext {
+  font-size: .9rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,.65);
+  margin: 0 0 32px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.contact-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.cd-icon {
+  width: 40px; height: 40px;
+  background: rgba(201,168,76,.2);
+  border: 1px solid rgba(201,168,76,.35);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: #c9a84c;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.contact-detail-item strong {
+  display: block;
+  font-size: .9rem;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.contact-detail-item span {
+  font-size: .8rem;
+  color: rgba(255,255,255,.5);
+}
+
+/* Priest */
+.contact-priest {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  background: rgba(255,255,255,.08);
+  border-radius: 12px;
+  border: 1px solid rgba(201,168,76,.2);
+}
+.priest-avatar {
+  width: 52px; height: 52px;
+  background: rgba(201,168,76,.15);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #c9a84c;
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+.contact-priest strong {
+  display: block;
+  font-size: .95rem;
+  color: #fff;
+  font-weight: 600;
+}
+.contact-priest span {
+  font-size: .8rem;
+  color: rgba(255,255,255,.5);
+}
+
+/* ── Form Panel ─────────────────────────────────────── */
+.contact-form-panel {
+  background: #fff;
+  border-radius: 20px;
+  padding: 44px 40px;
+  border: 1px solid #e8ddd5;
+  box-shadow: 0 8px 40px rgba(107,26,42,.08);
+}
+
+.form-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.6rem;
+  color: #2d2020;
+  margin: 0 0 28px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: .82rem;
+  font-weight: 600;
+  color: #5a4a4e;
+  letter-spacing: .3px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 16px;
+  border: 2px solid #e8ddd5;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: .9rem;
+  color: #2d2020;
+  transition: border-color .2s, box-shadow .2s;
+  outline: none;
+  resize: vertical;
+  background: #fdf9f7;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #6b1a2a;
+  box-shadow: 0 0 0 3px rgba(107,26,42,.1);
+  background: #fff;
+}
+.form-group textarea { min-height: 130px; }
+
+.form-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 40px;
+  background: linear-gradient(135deg, #6b1a2a, #4a1020);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Inter', sans-serif;
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: .5px;
+  transition: transform .25s, box-shadow .25s, opacity .25s;
+  align-self: flex-start;
+}
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(107,26,42,.3);
+  opacity: .93;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-container { grid-template-columns: 1fr; gap: 32px; }
+  .contact-info-panel { position: static; }
+}
+@media (max-width: 600px) {
+  .contact-form-panel { padding: 28px 22px; }
+  .contact-info-panel { padding: 28px 22px; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-heading { font-size: 1.6rem; }
+}
 </style>
