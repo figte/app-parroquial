@@ -84,7 +84,7 @@ const base = import.meta.env.BASE_URL
             <div class="clearfix"></div>
             <div class="copyright">
               <p>
-                Parroquia <strong>Nuestra Señora del Refugio</strong> &mdash; Copyright © 2026 | Todos los derechos reservados
+                Parroquia <strong>[Nombre de su Parroquia]</strong> &mdash; Copyright © 2026 | Todos los derechos reservados
               </p>
             </div>
             <!-- .copyright -->

@@ -11,8 +11,8 @@ const base = import.meta.env.BASE_URL
         <div class="container-fluid">
           <div class="text-center parish-full-name">
             <i class="fa fa-plus-circle"></i>
-            &nbsp;Parroquia Nuestra Señora de El Refugio&nbsp;
-            <span class="parish-location">— Ahuachapán, El Salvador —</span>
+            &nbsp;Parroquia [Nombre de su Parroquia]&nbsp;
+            <span class="parish-location">— Ciudad, País —</span>
             &nbsp;<i class="fa fa-plus-circle"></i>
           </div>
         </div>

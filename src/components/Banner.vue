@@ -106,7 +106,7 @@ onMounted(() => {
                         data-origin="tl"
                         data-position="normal"
                       >
-                        Ahuachapán, El Salvador · Diócesis de Santa Ana
+                        [Ciudad, País] · [Diócesis]
                       </div>
                       <div
                         class="ms-layer msp-cn-3-1"
@@ -123,7 +123,7 @@ onMounted(() => {
                         data-origin="tl"
                         data-position="normal"
                       >
-                        PARROQUIA NUESTRA SEÑORA DE EL REFUGIO
+                        PARROQUIA [NOMBRE DE SU PARROQUIA]
                       </div>
                       <img
                         class="ms-layer"
@@ -231,7 +231,7 @@ onMounted(() => {
                         data-origin="tl"
                         data-position="normal"
                       >
-                        DIÓCESIS DE SANTA ANA · EL SALVADOR
+                        [DIÓCESIS] · [PAÍS]
                       </div>
                       <div
                         class="ms-layer msp-cn-3-7"
@@ -343,7 +343,7 @@ onMounted(() => {
                     <div class="ms-slide" data-delay="8" data-fill-mode="fill">
                       <img
                         :src="base + 'assets/images/blank.gif'"
-                        alt="Altar de la Parroquia Nuestra Señora de El Refugio"
+                        alt="Altar de la Parroquia"
                         :data-src="base + 'assets/images/09/foto-altar.jpg'"
                       />
                       <div
@@ -359,7 +359,7 @@ onMounted(() => {
                         data-offset-y="263"
                         data-origin="tl"
                         data-position="normal"
-                      >PARROQUIA NUESTRA SEÑORA DE EL REFUGIO</div>
+                      >PARROQUIA [NOMBRE DE SU PARROQUIA]</div>
                       <div
                         class="ms-layer msp-cn-1-4"
                         data-effect="t(true,220,143,602,n,n,n,n,n,n,n,n,n,n,n)"
@@ -373,7 +373,7 @@ onMounted(() => {
                         data-offset-y="321"
                         data-origin="tl"
                         data-position="normal"
-                      >Ahuachapán, El Salvador · Diócesis de Santa Ana</div>
+                      >[Ciudad, País] · [Diócesis]</div>
                       <a
                         href="#mapa"
                         class="ms-layer msp-cn-1-6 ms-btn ms-btn-circle ms-btn-n msp-preset-btn-137"
@@ -429,7 +429,7 @@ onMounted(() => {
                         data-offset-y="323"
                         data-origin="tl"
                         data-position="normal"
-                      >Parroquia Nuestra Señora de El Refugio — Ahuachapán</div>
+                      >Parroquia [Nombre] — [Ciudad]</div>
                       <a
                         href="#events"
                         class="ms-layer msp-cn-1-10 ms-btn ms-btn-circle ms-btn-l msp-preset-btn-127"

@@ -128,14 +128,14 @@ const base = import.meta.env.BASE_URL
                       alt="team-3"
                     />
                     <div class="info">
-                      <h3>Padre Juan Pablo Rodríguez</h3>
+                      <h3>[Nombre del Párroco]</h3>
                       <p>Párroco</p>
                       <span>
-                        <b>TEL:</b> +57 300 000 0000
+                        <b>TEL:</b> +00 000 000 0000
                       </span>
                       <br />
                       <span>
-                        <b>Email:</b> parroquia@diocesis.org
+                        <b>Email:</b> parroquia@ejemplo.org
                       </span>
                     </div>
                     <!-- /.info -->
@@ -149,8 +149,8 @@ const base = import.meta.env.BASE_URL
                           <i class="fa fa-map-marker base-color"></i>
                         </div>
                         <div class="media-body">
-                          Carrera 5 # 10-20, Barrio Centro
-                          <br />Ciudad, Colombia.
+                          [Dirección de la Parroquia]
+                          <br />[Ciudad, País].
                           <br />
                         </div>
                         <!-- end media body -->
