@@ -1,456 +1,200 @@
 <script setup>
 const base = import.meta.env.BASE_URL
+
+const noticias = [
+  {
+    img: 'assets/images/09/02.jpg',
+    titulo: 'Campaña de Cuaresma: Comparte tu Pan',
+    fecha: '1 Mar 2026',
+    categoria: 'Pastoral Social',
+    resumen: 'Durante este tiempo de Cuaresma, nuestra parroquia invita a toda la comunidad a participar en la colecta de alimentos para las familias más necesitadas.',
+  },
+  {
+    img: 'assets/images/09/03.jpg',
+    titulo: 'Jornada de Bautizos — Primer Domingo de Mes',
+    fecha: '20 Feb 2026',
+    categoria: 'Sacramentos',
+    resumen: 'El próximo primer domingo del mes celebraremos la jornada de bautizos. Familias interesadas deben inscribirse en la oficina parroquial con anticipación.',
+  },
+  {
+    img: 'assets/images/09/01.jpg',
+    titulo: 'Inscripción Catequesis 2026',
+    fecha: '15 Feb 2026',
+    categoria: 'Formación',
+    resumen: 'Están abiertas las inscripciones para la catequesis de primera comunión y confirmación 2026. Niños de 8 años en adelante.',
+  },
+  {
+    img: 'assets/images/09/05.jpg',
+    titulo: 'Retiro Espiritual para Adultos',
+    fecha: '5 Feb 2026',
+    categoria: 'Espiritualidad',
+    resumen: 'El grupo de oración invita a todos los feligreses adultos al retiro espiritual que se realizará los días 14 y 15 de marzo en nuestra parroquia.',
+  },
+]
+
+const catColors = {
+  'Pastoral Social': '#2e7d32',
+  'Sacramentos': '#6b1a2a',
+  'Formación': '#1565c0',
+  'Espiritualidad': '#6a1a7a',
+}
 </script>
 
 <template>
-    <!-- section padding start -->
-      <section class="section-padding" id="recent-post">
-        <div class="container">
-          <div class="content-section">
-            <div class="content-wrapper">
-              <h2 class="section-title">Noticias Parroquiales</h2>
+  <section class="noticias-section section-padding" id="recent-post">
+    <div class="container">
+      <div class="text-center mb-section">
+        <h2 class="section-title">Noticias Parroquiales</h2>
+        <p class="section-detail">
+          Entérese de todo lo que sucede en nuestra comunidad: actividades, anuncios y noticias pastorales.
+        </p>
+      </div>
 
-              <div class="section-detail">
-                Entérese de todo lo que sucede en nuestra comunidad parroquial: actividades, anuncios pastorales y noticias de la Diócesis.
-              </div>
-              <!-- /.section-detail -->
-              <div class="vc_row wpb_row vc_inner row-fluid">
-                <div class="col-sm-8">
-                  <div class="content-wrapper">
-                    <div class="peace-blog">
-                      <div class="post-list-container">
-                        <div class="scrollbar-inner">
-                          <article>
-                            <div class="post-list-block clearfix">
-                              <div class="post-img col-md-4">
-                                <div class="row">
-                                  <a class="news-link" href="#">
-                                    <img
-                                      width="401"
-                                      height="401"
-                                      :src="base + 'assets/images/09/02.jpg'"
-                                      class="attachment-post_img wp-post-image"
-                                      alt="02"
-                                    />
-                                  </a>
-                                </div>
-                              </div>
-                              <div class="post-info-block col-md-8">
-                                <h2>
-                                  <a class="uppercase" href="#">Collaboratively coordinate.</a>
-                                </h2>
-                                <div class="news-info">
-                                  <span class="news-author">
-                                    <span class="tm">
-                                      <i class="fa fa-calendar-o"></i> 10 Sep
-                                      2015
-                                    </span>
-                                    |
-                                    <span class="usr">
-                                      <i class="fa fa-user"></i> Peace
-                                      Theme
-                                    </span>
-                                    |
-                                    <span class="cmnt">
-                                      <i class="fa fa-comments-o"></i>
-                                      <a href="#">10</a>
-                                    </span>
-                                  </span>
-                                </div>
-                                <div class="info-text">
-                                  Revolutions of the bright points that first
-                                  defined him to me. And beneath the effulgent
-                                  Antarctic skies I have boarded the Argo-Navis,
-                                  and joined the I have boarded the Argo-Navis,
-                                  and joined the
-                                </div>
-                              </div>
-                              <!-- end post info -->
-                            </div>
-                            <!-- end post list blog -->
-                          </article>
-
-                          <article>
-                            <div class="post-list-block clearfix">
-                              <div class="post-img col-md-4">
-                                <div class="row">
-                                  <a class="news-link" href="#">
-                                    <img
-                                      width="958"
-                                      height="958"
-                                      :src="base + 'assets/images/09/03.jpg'"
-                                      class="attachment-post_img wp-post-image"
-                                      alt="03"
-                                    />
-                                  </a>
-                                </div>
-                              </div>
-                              <div class="post-info-block col-md-8">
-                                <h2>
-                                  <a class="uppercase" href="#">Quickly develop exceptional</a>
-                                </h2>
-                                <div class="news-info">
-                                  <span class="news-author">
-                                    <span class="tm">
-                                      <i class="fa fa-calendar-o"></i> 10 Sep
-                                      2015
-                                    </span>
-                                    |
-                                    <span class="usr">
-                                      <i class="fa fa-user"></i> Peace
-                                      Theme
-                                    </span>
-                                    |
-                                    <span class="cmnt">
-                                      <i class="fa fa-comments-o"></i>
-                                      <a href="#respond">5</a>
-                                    </span>
-                                  </span>
-                                </div>
-                                <div class="info-text">
-                                  Revolutions of the bright points that first
-                                  defined him to me. And beneath the effulgent
-                                  Antarctic skies I have boarded the Argo-Navis,
-                                  and joined the I have boarded the Argo-Navis,
-                                  and joined the
-                                </div>
-                              </div>
-                              <!-- end post info -->
-                            </div>
-                            <!-- end post list blog -->
-                          </article>
-
-                          <article>
-                            <div class="post-list-block clearfix">
-                              <div class="post-img col-md-4">
-                                <div class="row">
-                                  <a class="news-link" href="index-2.htm?p=173">
-                                    <img
-                                      width="600"
-                                      height="600"
-                                      :src="base + 'assets/images/09/01.jpg'"
-                                      class="attachment-post_img wp-post-image"
-                                      alt="01"
-                                    />
-                                  </a>
-                                </div>
-                              </div>
-                              <div class="post-info-block col-md-8">
-                                <h2>
-                                  <a
-                                    class="uppercase"
-                                    href="index-2.htm?p=173"
-                                  >Why you need this Theme?</a>
-                                </h2>
-                                <div class="news-info">
-                                  <span class="news-author">
-                                    <span class="tm">
-                                      <i class="fa fa-calendar-o"></i> 10 Sep
-                                      2015
-                                    </span>
-                                    |
-                                    <span class="usr">
-                                      <i class="fa fa-user"></i> Peace
-                                      Theme
-                                    </span>
-                                    |
-                                    <span class="cmnt">
-                                      <i class="fa fa-comments-o"></i>
-                                      <a href="index-2.htm?p=173#respond">7</a>
-                                    </span>
-                                  </span>
-                                </div>
-                                <div class="info-text">
-                                  Revolutions of the bright points that first
-                                  defined him to me. And beneath the effulgent
-                                  Antarctic skies I have boarded the Argo-Navis,
-                                  and joined the I have boarded the Argo-Navis,
-                                  and joined the
-                                </div>
-                              </div>
-                              <!-- end post info -->
-                            </div>
-                            <!-- end post list blog -->
-                          </article>
-
-                          <article
-                            id="post-1"
-                            class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-muslim"
-                          >
-                            <div class="post-list-block clearfix">
-                              <div class="post-img col-md-4">
-                                <div class="row">
-                                  <a class="news-link" href="index-1.htm?p=1">
-                                    <img
-                                      width="660"
-                                      height="660"
-                                      :src="base + 'assets/images/09/05.jpg'"
-                                      class="attachment-post_img wp-post-image"
-                                      alt="05"
-                                    />
-                                  </a>
-                                </div>
-                              </div>
-                              <div class="post-info-block col-md-8">
-                                <h2>
-                                  <a
-                                    class="uppercase"
-                                    href="index-1.htm?p=1"
-                                  >What You Know About Life</a>
-                                </h2>
-                                <div class="news-info">
-                                  <span class="news-author">
-                                    <span class="tm">
-                                      <i class="fa fa-calendar-o"></i> 07 Sep
-                                      2015
-                                    </span>
-                                    |
-                                    <span class="usr">
-                                      <i class="fa fa-user"></i> Peace
-                                      Theme
-                                    </span>
-                                    |
-                                    <span class="cmnt">
-                                      <i class="fa fa-comments-o"></i>
-                                      <a href="index-1.htm?p=1#comments">1</a>
-                                    </span>
-                                  </span>
-                                </div>
-                                <div class="info-text">
-                                  Revolutions of the bright points that first
-                                  defined him to me. And beneath the effulgent
-                                  Antarctic skies I have boarded the Argo-Navis,
-                                  and joined the
-                                </div>
-                              </div>
-                              <!-- end post info -->
-                            </div>
-                            <!-- end post list blog -->
-                          </article>
-                        </div>
-                        <!-- end scrollbar inner -->
-                      </div>
-                      <!-- end post list container -->
-                    </div>
-                    <!-- end place blog -->
-                  </div>
-                  <!-- end content wrapper -->
-                </div>
-                <!-- end col sm 8 -->
-
-                <div class="col-sm-4">
-                  <div class="content-wrapper">
-                    <div
-                      id="menu-product-slider"
-                      class="menu-product-slider product-carousel carousel slide"
-                      data-ride="carousel"
-                    >
-                      <h2 class="widget-title">Best Product</h2>
-
-                      <!-- Indicators -->
-                      <ol class="product-carousel-indicators carousel-indicators">
-                        <li data-target="#menu-product-slider" data-slide-to="0" class="active"></li>
-                        <li data-target="#menu-product-slider" data-slide-to="1"></li>
-                        <li data-target="#menu-product-slider" data-slide-to="2"></li>
-                      </ol>
-
-                      <div class="woocommerce carousel-inner" role="listbox">
-                        <div class="item active">
-                          <div class="product-item clearfix">
-                            <div class="product-image">
-                              <a class="thumb" href="#">
-                                <div class="hex content-icon-hex">
-                                  <div class="content-icon">
-                                    <i class="fa fa-rocket"></i>
-                                  </div>
-                                </div>
-                                <img
-                                  width="300"
-                                  height="300"
-                                  :src="base + 'assets/images/c3.jpeg'"
-                                  class="attachment-shop_catalog wp-post-image"
-                                  alt="cd_6_angle"
-                                />
-                              </a>
-                              <a
-                                :href="base + 'assets/images/c3.jpeg'"
-                                class="quick-view boxer"
-                                title="Woo Single #2"
-                              >
-                                <span>Quick View</span>
-                              </a>
-                            </div>
-                            <div class="product-description product-slide">
-                              <div class="product-head">
-                                <h2 class="product-title">
-                                  <a href="#">Lorem ipsum dolor.</a>
-                                </h2>
-                                <div class="star-rating" title="Rated 4.50 out of 5">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                </div>
-                                <!-- end star rating -->
-                                <span class="price product-price">
-                                  <span class="amount">&#36;9.00</span>
-                                </span>
-                              </div>
-                              <!-- end product head -->
-                              <div class="product-action">
-                                <a
-                                  href="/peace/?add-to-cart=263"
-                                  rel="nofollow"
-                                  data-product_id="263"
-                                  data-product_sku
-                                  data-quantity="1"
-                                  class="btn add-to-cart add_to_cart_button product_type_simple"
-                                >
-                                  <i class="fa fa-shopping-cart"></i> Add to
-                                  cart
-                                </a>
-                              </div>
-                              <!-- end product action -->
-                            </div>
-                            <!-- end product description -->
-                          </div>
-                        </div>
-                        <div class="item">
-                          <div class="product-item clearfix">
-                            <div class="product-image">
-                              <a class="thumb" href="#">
-                                <img
-                                  width="300"
-                                  height="300"
-                                  :src="base + 'assets/images/c1.jpg'"
-                                  class="attachment-shop_catalog wp-post-image"
-                                  alt="cd_5_angle"
-                                />
-                              </a>
-                              <a
-                                :href="base + 'assets/images/c1.jpg'"
-                                class="quick-view boxer"
-                                title="Lorem ipsum dolor."
-                              >
-                                <span>Quick View</span>
-                              </a>
-                            </div>
-                            <div class="product-description product-slide">
-                              <div class="product-head">
-                                <h2 class="product-title">
-                                  <a href="#">Lorem ipsum dolor.</a>
-                                </h2>
-                                <div class="star-rating" title="Rated 4.50 out of 5">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                </div>
-                                <!-- end star rating -->
-                                <span class="price product-price">
-                                  <span class="amount">&#36;9.00</span>
-                                </span>
-                              </div>
-                              <!-- end product head -->
-                              <div class="product-action">
-                                <a
-                                  href="/peace/?add-to-cart=263"
-                                  rel="nofollow"
-                                  data-product_id="263"
-                                  data-product_sku
-                                  data-quantity="1"
-                                  class="btn add-to-cart add_to_cart_button product_type_simple"
-                                >
-                                  <i class="fa fa-shopping-cart"></i> Add to
-                                  cart
-                                </a>
-                              </div>
-                              <!-- end product action -->
-                            </div>
-                            <!-- end product description -->
-                          </div>
-                          <!-- end product item -->
-                        </div>
-                        <!-- end item -->
-                        <div class="item">
-                          <div class="product-item clearfix">
-                            <div class="product-image">
-                              <a class="thumb" href="#">
-                                <img
-                                  width="300"
-                                  height="300"
-                                  :src="base + 'assets/images/c2.jpg'"
-                                  class="attachment-shop_catalog wp-post-image"
-                                  alt="cd_4_angle"
-                                />
-                              </a>
-                              <a
-                                :href="base + 'assets/images/c2.jpg'"
-                                class="quick-view boxer"
-                                title="Woo Single #1"
-                              >
-                                <span>Quick View</span>
-                              </a>
-                            </div>
-                            <div class="product-description product-slide">
-                              <div class="product-head">
-                                <h2 class="product-title">
-                                  <a href="index-3.htm?product=woo-single-1">Holly Meditaiton</a>
-                                </h2>
-                                <div class="star-rating" title="Rated 4.50 out of 5">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                </div>
-                                <!-- end star rating -->
-                                <span class="price product-price">
-                                  <span class="amount">&#36;3.00</span>
-                                </span>
-                              </div>
-                              <!-- end product head -->
-                              <div class="product-action">
-                                <a
-                                  href="/peace/?add-to-cart=262"
-                                  rel="nofollow"
-                                  data-product_id="262"
-                                  data-product_sku
-                                  data-quantity="1"
-                                  class="btn add-to-cart add_to_cart_button product_type_simple"
-                                >
-                                  <i class="fa fa-shopping-cart"></i> Add to
-                                  cart
-                                </a>
-                              </div>
-                              <!-- end product action -->
-                            </div>
-                            <!-- end product description -->
-                          </div>
-                          <!-- end product item -->
-                        </div>
-                        <!-- end item -->
-                      </div>
-                      <!-- end woocommerce -->
-                    </div>
-                    <!-- end menu product slider  -->
-                  </div>
-                  <!-- end content wrapper -->
-                </div>
-                <!-- end col sm 4 -->
-              </div>
-              <!-- end vc row wpb row -->
-            </div>
-            <!-- end content wrapper -->
+      <div class="noticias-grid">
+        <article v-for="n in noticias" :key="n.titulo" class="noticia-card">
+          <div class="noticia-img">
+            <img :src="base + n.img" :alt="n.titulo" loading="lazy" />
+            <span
+              class="noticia-cat"
+              :style="{ background: catColors[n.categoria] || '#6b1a2a' }"
+            >{{ n.categoria }}</span>
           </div>
-          <!-- end content section -->
-        </div>
-        <!-- end container -->
-      </section>
-      <!-- end section padding -->
+          <div class="noticia-body">
+            <div class="noticia-meta">
+              <i class="fa fa-calendar-o"></i> {{ n.fecha }}
+            </div>
+            <h3 class="noticia-title">
+              <a href="#">{{ n.titulo }}</a>
+            </h3>
+            <p class="noticia-excerpt">{{ n.resumen }}</p>
+            <a href="#" class="noticia-link">
+              Leer más <i class="fa fa-long-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 </template>
 
+<style scoped>
+.noticias-section { background: #f8f4f0; }
+.mb-section { margin-bottom: 2rem; }
 
+/* Grid — 2 columns on desktop, 1 on mobile */
+.noticias-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
 
-<style>
+/* Card */
+.noticia-card {
+  display: flex;
+  gap: 0;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e8ddd5;
+  box-shadow: 0 2px 12px rgba(107,26,42,.06);
+  transition: transform .25s, box-shadow .25s;
+}
+.noticia-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(107,26,42,.13);
+}
 
+/* Image */
+.noticia-img {
+  position: relative;
+  width: 140px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #e0d8d0;
+}
+.noticia-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s;
+  display: block;
+}
+.noticia-card:hover .noticia-img img { transform: scale(1.07); }
+
+.noticia-cat {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 0 6px 6px 0;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+/* Body */
+.noticia-body {
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.noticia-meta {
+  font-size: .77rem;
+  color: #8a7a7e;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.noticia-meta .fa { color: #c9a84c; }
+
+.noticia-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: .98rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 8px;
+}
+.noticia-title a {
+  color: #2d2020;
+  text-decoration: none;
+  transition: color .2s;
+}
+.noticia-title a:hover { color: #6b1a2a; }
+
+.noticia-excerpt {
+  font-size: .83rem;
+  color: #5a4a4e;
+  line-height: 1.6;
+  flex: 1;
+  margin: 0 0 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.noticia-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .8rem;
+  font-weight: 600;
+  color: #6b1a2a;
+  text-decoration: none;
+  margin-top: auto;
+  transition: gap .2s;
+}
+.noticia-link:hover { gap: 10px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .noticias-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .noticia-card { flex-direction: column; }
+  .noticia-img { width: 100%; height: 180px; }
+}
 </style>
