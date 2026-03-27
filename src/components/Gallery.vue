@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 const base = import.meta.env.BASE_URL
 
 const activeFilter = ref('all')
@@ -34,8 +34,6 @@ const filtered = computed(() =>
 
 function openLightbox(photo) { lightbox.value = photo }
 function closeLightbox()     { lightbox.value = null }
-
-import { computed } from 'vue'
 </script>
 
 <template>
